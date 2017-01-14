@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -14,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -44,9 +45,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        return view('users.showInfo');
+        if (!Auth::check()) return view("auth.login");
+        $userModel = new User();
+        $data = $userModel->getGameUser(Auth::user()->id);
+        return view('users.showInfo',["data" =>$data->toArray()]);
     }
 
     /**
@@ -84,12 +88,8 @@ class UserController extends Controller
         //store in the database
         $user = User::find($id);
         $user->name = $request->name;
-        $user->email = $request->email;;
-        $user->password = $request->password;;
-        $user->steam = $request->steam;;
-        $user->cs_level = $request->cs_level;;
-        $user->lol_level = $request->lol_level;;
-        $user->rl_level = $request->rl_level;;
+        $user->email = $request->email;
+        $user->password = $request->password;
         $user->save();//save in db
 
         return redirect('/home');
@@ -104,5 +104,10 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addGame(){
+        if (!Auth::check) return view('user.login');
+        return view('users.add');
     }
 }

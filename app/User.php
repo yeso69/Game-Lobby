@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DB;
 
 class User extends Authenticatable
 {
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'steam'
+        'name', 'email', 'password'
     ];
 
     /**
@@ -26,4 +27,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getGameUser($id){
+        $game = DB::table('game_user')
+            ->select('game_user.*' , 'games.*')
+            ->join('games', 'game_user.id_game', '=', 'games.id_game')
+            ->where('game_user.id_user', '=', $id)
+            ->get();
+
+        return $game;
+    }
 }

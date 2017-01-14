@@ -1,0 +1,40 @@
+body{
+    background: white;
+    font-family: 'Titillium Web', sans-serif;
+
+}
+
+#leftbar{
+    height: 100vh;
+    background-color: #171717;
+    padding-top: 30px;
+}
+
+
+#leftbar_logo{
+    width: 100%;
+    height: auto;
+}
+
+#leftbar_menu{
+    width: 100%;
+    min-height: 50px;
+    margin-top: 50px;
+}
+
+.leftbar_menuitem{
+    height: 50px;
+    color: whitesmoke;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.leftbar_menuitem:hover{
+    background-color: #1ab188;
+    color: white;
+    font-weight: bolder;
+}
+

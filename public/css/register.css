@@ -1,0 +1,124 @@
+body{
+    padding: 50px;
+}
+#container{
+    background: rgba(19, 35, 47, 0.9);
+    padding: 40px;
+    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+
+#containerSwitchForm{
+    height: 70px;
+    width: 100%;
+}
+
+#divLogin, #divRegister, #divValidateRegister, #divValidateLogin{
+    height: 50px;
+    color: white;
+    line-height: 50px;
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #1ab188;
+
+}
+
+#divValidateRegister, #divValidateLogin{
+    margin-top: 20px;
+}
+
+.not_selected{
+    background-color: rgba(160, 179, 176, 0.25) !important;
+}
+
+.not_selected:hover, #divValidateRegister:hover, #divValidateLogin:hover{
+    background-color: #179b77 !important;
+    -webkit-transition: background-color 200ms linear;
+    -moz-transition: background-color 200ms linear;
+    -o-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+}
+
+#formLogin{
+    display: none;
+}
+
+.form{
+    width: 100%;
+}
+
+.form input{
+    font-size: 22px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+    background: none;
+    border: 1px solid #a0b3b0;
+    color: white;
+    margin-top: 30px;
+}
+
+.form input:focus{
+    border-color: #1ab188;
+    color: #1ab188;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    grey;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    grey;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    grey;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    grey;
+}
+
+
+.pickGame{
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid whitesmoke;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.pickGame img{
+    width: 100%;
+    height: auto;
+}
+
+.gameSelected{
+    border: 3px solid #1ab188;
+}
+
+.layer {
+    background:rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.layer img {
+    position:absolute;
+    margin:auto;
+    width: 50%;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
