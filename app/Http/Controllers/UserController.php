@@ -106,8 +106,13 @@ class UserController extends Controller
         //
     }
 
-    public function addGame(){
-        if (!Auth::check) return view('user.login');
-        return view('users.add');
+    public function addGameData(Request $request){
+        if (!Auth::check()) return view('user.login');
+        $data = $request->input();
+        unset($data["_token"]);
+        $data['id_user'] = Auth::user()->id;
+        $userModel = new User();
+        $userModel->insertGame($data);
+        return redirect()->route('users.show',Auth::user());
     }
 }

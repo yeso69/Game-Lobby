@@ -38,3 +38,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/findPlayers', 'FriendController@index');
+Route::post('/users/addGameData','UserController@addGameData');

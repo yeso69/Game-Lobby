@@ -37,4 +37,8 @@ class User extends Authenticatable
 
         return $game;
     }
+
+    public function insertGame($data){
+        DB::table('game_user')->insert($data);
+    }
 }

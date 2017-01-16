@@ -4,23 +4,23 @@
 
     Ajouter un jeu :
 
-    <form class="form-horizontal" role="form" method="POST" action="{{ url('/user/addGame') }}">
+    <form class="form-horizontal" role="form" method="POST" action="{{ url('/users/addGameData') }}">
         {{ csrf_field() }}
 
         <div class="{{ $errors->has('game_name') ? ' has-error' : '' }}">
             <label for="game_name" class="col-md-4 control-label">Jeu</label>
 
             <div class="col-md-6">
-                <select id="game_name" class="form-control" name="game_name" value="{{ old('game_name') }}" required autofocus>
+                <select id="game_name" class="form-control" name="id_game" value="{{ old('id_game') }}" required autofocus>
                     <option>Sélectionner un Jeu</option>
                     <option value="1">League of Legends</option>
                     <option value="2">Rocket League</option>
                     <option value="3">CS GO</option>
                 </select>
 
-                @if ($errors->has('game_name'))
+                @if ($errors->has('id_game'))
                     <span class="help-block">
-                                        <strong>{{ $errors->first('game_name') }}</strong>
+                                        <strong>{{ $errors->first('id_game') }}</strong>
                                     </span>
                 @endif
             </div>
@@ -44,7 +44,7 @@
             <label for="level" class="col-md-4 control-label">Niveau rank</label>
 
             <div class="col-md-6">
-                <select id="level" class="form-control" name="game_name" value="{{ old('level') }}" required autofocus>
+                <select id="level" class="form-control" name="level" value="{{ old('level') }}" required autofocus>
                     <option>Sélectionner un rank</option>
                     <option value="bronze">Bronze</option>
                     <option value="silver">Silver</option>
