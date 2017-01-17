@@ -23,9 +23,7 @@ Route::get('/about', function () {
     return view('pages.about');
 });
 
-Route::get('/users/addGame', function () {
-    return view('users.addGame');
-});
+Route::get('/users/addGame','UserController@loadAddGame');
 
 
 
