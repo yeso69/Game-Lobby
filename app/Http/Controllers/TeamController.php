@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Message;
 use App\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class TeamController extends Controller
@@ -95,9 +96,15 @@ class TeamController extends Controller
 
     public function showAllTeams(){
         $teamModel = new Team();
-        $data = $teamModel->getAllTeams();
-        return view('teams.list')->with(['teams' => $data->toArray()]);
+//        $data = $teamModel->getAllTeams();
+        return view('teams.list');
         //return view('teams.browse_teams',["data" =>$data->toArray()]);
 
+    }
+
+    public function getTeamsByGame(Request $request){
+        $teamModel = new Team();
+        $data = $teamModel->getTeamsByGame($request->id_game,Auth::user()->id);
+        return json_encode($data);
     }
 }

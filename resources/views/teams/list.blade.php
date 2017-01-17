@@ -15,13 +15,21 @@
     <div class="col-lg-10" id="browse_teams">
         <h1>Teams</h1>
 
-    @foreach ($teams as $team)
-            <div class="col-lg-6">
-                <div class="team_card">
-                   <h1> Description : {{$team->description}} </h1>
-                </div>
-            </div>
-        @endforeach
+        Sélectionner un jeu :
+        <select id="choose_game" onchange="changeGame()" >
+            <option disabled selected value> -- Sélectionner un jeu -- </option>
+            <option value="3">CS: GO</option>
+            <option value="2">Rocket Leagues</option>
+            <option value="1">League of Legends</option>
+        </select>
+
+    {{--@foreach ($teams as $team)--}}
+            {{--<div class="col-lg-6">--}}
+                {{--<div class="team_card">--}}
+                   {{--<h1> Description : {{$team->description}} </h1>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--@endforeach--}}
     </div>
 
 

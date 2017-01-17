@@ -26,12 +26,12 @@ Route::get('/about', function () {
 Route::get('/users/addGame','UserController@loadAddGame');
 
 Route::get('/teams/list', 'TeamController@showAllTeams')->name('teams.list');
+Route::post('/teams/getTeamsByGame', 'TeamController@getTeamsByGame')->name('teams.getTeamsGame');
 
 Route::resource('teams', 'TeamController');
 
 Route::resource('friends', 'FriendController');
 
-Route::resource('levels', 'GameLevelController');
 
 Route::resource('users', 'UserController');
 Auth::routes();

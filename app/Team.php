@@ -23,4 +23,15 @@ class Team extends Model
             ->get();
         return $team;
     }
+
+
+    public function getTeamsByGame($id_game,$id_user){
+        $team = DB::table('teams')
+            ->select('teams.*')
+            ->join('team_user','teams.id_team','=','team_user.id_team')
+            ->where('teams.id_game', '=', $id_game)
+            ->where('team_user.id_user', '!=', $id_user)
+            ->get();
+        return $team;
+    }
 }

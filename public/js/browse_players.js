@@ -32,6 +32,7 @@ function changeGame(){
                             '<div>Poste:' + data[i]["position"] + '</div>'+
                             '<div>Description:' + data[i]["description"] + '</div>'+
                             '<div>Recherche:' + data[i]["search"] + '</div>'+
+                            '<a href="/message/showConv/' + data[i]["id_user"] + '"><button>Envoyer un message</button></a>' +
                         '</div>' +
                     '</div>')
             }else {
@@ -44,6 +45,7 @@ function changeGame(){
                             '<div>Level:' + data[i]["level"] + '</div>'+
                             '<div>Description:' + data[i]["description"] + '</div>'+
                             '<div>Recherche:' + data[i]["search"] + '</div>'+
+                            '<a href="/message/showConv/' + data[i]["id_user"] + '"><button>Envoyer un message</button></a>' +
                         '</div>' +
                     '</div>');
             }
