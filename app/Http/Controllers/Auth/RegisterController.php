@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -62,6 +63,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if($data['image'] == "")
+            $data['image'] = '/img/nopic.png';
+        else{
+                $file = Input::file('image');
+                //dd($data);
+                $extension = $file->getMimeType();
+
+                $destinationPath = 'images/';
+                $filename = $file->getClientOriginalName();
+                Input::file('image')->move($destinationPath, $filename);
+                $data['image'] = $destinationPath.$filename;
+
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

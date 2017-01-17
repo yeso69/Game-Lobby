@@ -114,4 +114,21 @@ class TeamController extends Controller
         $user = $teamModel->getUserByTeam($request->id_team,$data[0]->id_game);
         return view('teams.show_team',["data" =>$data->toArray(),"user" =>$user->toArray()]);
     }
+
+    public function myTeams(){
+        $id_user = Auth::user()->id;
+        $teamModel = new Team();
+        $data = $teamModel->getTeamsByUser($id_user)->toArray();
+        foreach ($data as $d){
+            $d->user = $teamModel->getUserByTeam($d->id_team,$d->id_game)->toArray();
+        }
+        return view('teams.my_teams',["data" =>$data]);
+    }
+
+    public function supprUserFromTeam(Request $request){
+        $id_user = $request->input('id_user');
+        $id_team = $request->input('id_team');
+        $teamModel = new Team();
+        $teamModel->suppUserFromTeam($id_user,$id_team);
+    }
 }
