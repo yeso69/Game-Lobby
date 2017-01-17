@@ -94,6 +94,19 @@ class Team extends Model
         return $data;
     }
 
+    public function addUserToTeam($idplayer, $idteam){
+        DB::table('team_user')->insert([
+            ['id_team' => $idteam],
+            ['id_user' => $idplayer]
+        ]);
+    }
+
+    public function markAsDeliberated($idrequest){
+        DB::table('requestjointeam')
+            ->where('id', $idrequest)
+            ->update(['deliberated' => 1]);
+    }
+
     public function suppUserFromTeam($id_user,$id_team){
         var_dump($id_team);die();
     }

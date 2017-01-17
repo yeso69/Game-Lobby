@@ -160,4 +160,14 @@ class TeamController extends Controller
         return view('teams.requests',["data" =>$data]);
     }
 
+    public function acceptRequest($idrequest){
+        $m =new Team();
+        $m->markAsDeliberated($idrequest)
+        $m->add($idrequest)
+    }
+
+    public function declineRequest(){
+
+    }
+
 }
