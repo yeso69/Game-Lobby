@@ -7,9 +7,10 @@
  */
 
 ?>
-
-<div class="player_card">
-    <div class="col-lg-4 player_resume">
-        <img class="img-circle img-responsive" src="../img/nopic.png">
+<div class="col-lg-3">
+    <div class="player_card">
+        <div class="col-lg-4 player_resume">
+            <img class="img-circle img-responsive" src="../img/nopic.png">
+        </div>
     </div>
 </div>

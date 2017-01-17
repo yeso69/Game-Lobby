@@ -29,7 +29,6 @@ Route::get('/users/addGame','UserController@loadAddGame');
 
 Route::resource('friends', 'FriendController');
 
-Route::resource('levels', 'GameLevelController');
 
 Route::resource('users', 'UserController');
 Auth::routes();
@@ -40,5 +39,8 @@ Route::get('/users/editGame/{id_game}', 'UserController@editGame');
 Route::get('/users/deleteGame/{id_game}', 'UserController@deleteGame');
 Route::post('/users/addGameData','UserController@addGameData');
 Route::post('/users/editGameData','UserController@editGameData');
+Route::post('/players/getPlayersByGame','PlayersController@getPlayersByGame');
+Route::post('/players/getPlayersByGameAndLevel','PlayersController@getPlayersByGameAndLevel');
+
 
 

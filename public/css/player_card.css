@@ -5,6 +5,7 @@
     margin-top: 50px;
     cursor: pointer;
     background-color: #202020;
+    color: white;
 }
 
 .player_card:hover{
