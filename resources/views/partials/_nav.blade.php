@@ -15,7 +15,7 @@
         {{--<!-- Collect the nav links, forms, and other content for toggling -->--}}
         {{--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">--}}
             {{--<ul class="nav navbar-nav">--}}
-                {{--<li class="active"><a href="/findPlayers">Trouver des joueurs</a></li>--}}
+                {{--<li ><a href="/findPlayers">Trouver des joueurs</a></li>--}}
                 {{--<li><a href="/about">A propos</a></li>--}}
                 {{--<li><a href="/contact">Contact</a></li>--}}
             {{--</ul>--}}
@@ -35,41 +35,40 @@
     <a href="/"><img id="leftbar_logo" src="{{ URL('/img/logo.gif') }}"></a>
 
     <div id="leftbar_menu">
-        <div class="leftbar_menuitem" style="margin-top: 100px">
-            <ul class="nav navbar-nav navbar-right">
-                @if (!Auth::guest())
-                    <div class="leftbar_menuitem">
-                        <li class="active"><a href="/findPlayers">Trouver des joueurs</a></li>
+            @if (!Auth::guest())
+                <div class="leftbar_menuitem">
+                    <span ><a href="/findPlayers">Trouver des joueurs</a></span>
+                </div>
+            @endif
+            @if (Auth::guest())
+                <div class="leftbar_menuitem">
+                    <span ><a href="/login" role="button" aria-haspopup="true" aria-expanded="false">Se connecter</a></span>
+                </div>
+                <div class="leftbar_menuitem">
+                    <span ><a href="/register" role="button" aria-haspopup="true" aria-expanded="false">S'inscrire</a></span>
+                </div>
+            @else
+                <div class="leftbar_menuitem">
+                    <span ><a href="/users/showInfo">Mon compte</a></span>
+                </div>
+                <div id="message_button" class="leftbar_menuitem">
+                    <span id="message_button_title"><a href="#">Messages  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></span>
+                    <div id="bloc_conversations">
+                        <img src="{{ URL('/img/loading.gif') }}">
                     </div>
-                @endif
-                @if (Auth::guest())
-                    <li>
-                        <a href="/login" role="button" aria-haspopup="true" aria-expanded="false">Se connecter</a>
-                    </li>
-
-                    <li>
-                        <a href="/register" role="button" aria-haspopup="true" aria-expanded="false">S'inscrire</a>
-                    </li>
-                @else
-                    <li class="dropdown">
-                            <li><a href="/users/showInfo">Mon compte</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="{{ url('/logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    Déconnexion
-                                </a>
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                    </li>
-                @endif
-
-            </ul>
-        </div>
+                </div>
+                <div class="leftbar_menuitem">
+                    <span ><a href="{{ url('/logout') }}"
+                                          onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                            Déconnexion
+                        </a></span>
+                </div>
+                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+                </li>
+                </li>
+            @endif
     </div>
 </div>

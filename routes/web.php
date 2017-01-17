@@ -27,9 +27,9 @@ Route::get('/users/addGame', function () {
     return view('users.addGame');
 });
 
-
-
 Route::resource('friends', 'FriendController');
+
+//Route::resource('message', 'MessageController');
 
 Route::resource('levels', 'GameLevelController');
 
@@ -39,3 +39,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::get('/findPlayers', 'FriendController@index');
 Route::post('/users/addGameData','UserController@addGameData');
+Route::get('/message/getConv','MessageController@getConv')->name('message.getConv');
+Route::get('/message/showConv/{id}','MessageController@showConv')->name('message.getConv');
