@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class Team extends Model
 {
+
+    protected $fillable = [
+        'name_team', 'description', 'id_admin', 'image', 'id_game'
+    ];
     public function getAllTeams(){
         //
         $game = DB::table('teams')

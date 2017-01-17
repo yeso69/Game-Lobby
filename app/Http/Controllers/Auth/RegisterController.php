@@ -63,19 +63,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if($data['image'] == "")
+
+        if(!isset($data['image']))
             $data['image'] = '/img/nopic.png';
         else{
                 $file = Input::file('image');
-                //dd($data);
-                $extension = $file->getMimeType();
-
                 $destinationPath = 'images/';
                 $filename = $file->getClientOriginalName();
                 Input::file('image')->move($destinationPath, $filename);
                 $data['image'] = $destinationPath.$filename;
-
         }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
