@@ -9,7 +9,7 @@ function changeGame(){
     $.ajax({
         method: "POST",
         url: '/teams/getTeamsByGame',
-        data: { id_game: id_game}
+        data: {id_game: id_game}
     }).done(function(data) {
         data = JSON.parse(data);
     });
