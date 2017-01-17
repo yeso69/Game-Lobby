@@ -13,11 +13,18 @@
 @endsection
 
 @section('content')
-    <h1>Modifier mes infos générale {{ Auth::user()->id }}</h1>
-    <div class="col-lg-10" id="browse_teams">
-        <h1>Teams</h1>
 
-    {!! Form::open(['route'=>['users.update',Auth::user()->id],'method'=>'PATCH','files' =>true]) !!}
+    <div class="col-lg-10" id="browse_teams">
+        <h1>Mon compte </h1>
+
+    {{ Form::open(['route'=>['users.update',Auth::user()->id],'method'=>'PATCH','files' =>true]) }}
+
+
+        {{ Form::label('image','Image de profil :') }}
+        {{ Form::file('image') }}
+
+
+        <img src="{{ URL(Auth::user()->image)}}" alt="Smiley face" height="100" width="100">
 
         {{ Form::label('name','Nom:') }}
         {{Form::text('name',Auth::user()->name,array('class' => 'form-control'))}}
@@ -28,16 +35,12 @@
         {{ Form::label('password','Mot de passe:') }}
         {{Form::password('password',['class' => 'form-control'])}}
 
-        {{ Form::label('image','Image de profil :') }}
-        {{ Form::file('image') }}
 
-        <div class="col-lg-10" id="browse_players">
-            <img src="{{ URL(Auth::user()->image)}}" alt="Smiley face" height="100" width="100">
-        </div>
+
 
         {{ Form::submit('Valider',array('class' => 'btn btn-success btn-lg btn-block')) }}
 
-    {!! Form::close() !!}
+    {{ Form::close() }}
 
 
 

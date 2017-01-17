@@ -78,11 +78,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        //Validating the data
-
-        //store in the database
-
         $user = User::find($id);
 
 
@@ -92,6 +87,7 @@ class UserController extends Controller
         if(isset($request->image)){
             $user->image = $request->image;
             $file = Input::file('image');
+            dd('image');
             $extension = $file->getMimeType();
             //dd($file);
 

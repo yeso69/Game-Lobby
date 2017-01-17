@@ -7,8 +7,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Inscription</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-                        {{ csrf_field() }}
+                    {{ Form::open(['url'=>['/register'],'method'=>'POST','files' =>true]) }}
+
+                           {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Username</label>
@@ -63,6 +64,8 @@
                         {{ Form::label('image','Image de profil :') }}
                         {{ Form::file('image') }}
 
+
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
@@ -70,7 +73,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
