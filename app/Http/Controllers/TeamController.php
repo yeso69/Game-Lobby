@@ -124,4 +124,11 @@ class TeamController extends Controller
         }
         return view('teams.my_teams',["data" =>$data]);
     }
+
+    public function supprUserFromTeam(Request $request){
+        $id_user = $request->input('id_user');
+        $id_team = $request->input('id_team');
+        $teamModel = new Team();
+        $teamModel->suppUserFromTeam($id_user,$id_team);
+    }
 }

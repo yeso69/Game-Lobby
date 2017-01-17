@@ -32,6 +32,7 @@ Route::get('/teams/showT/{id_team}','TeamController@showTeamById');
 Route::get('/teams/show_team', function(){
     return view('teams.show_team');
 });
+Route::get('/teams/supprUserFromTeam/{id_user}/team/{id_team}','TeamController@supprUserFromTeam')->name('teams.supprUser');
 
 
 Route::resource('teams', 'TeamController');

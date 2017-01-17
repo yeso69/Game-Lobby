@@ -66,4 +66,8 @@ class Team extends Model
             ->get();
         return $data;
     }
+
+    public function suppUserFromTeam($id_user,$id_team){
+        var_dump($id_team);die();
+    }
 }
