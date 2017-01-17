@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{ URL('/css/team_card.css') }}">
     <script type="text/javascript" src="{{ URL('/js/browse_teams.js') }}"></script>
     <script type="text/javascript" src="{{ URL('/js/player_card.js') }}"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 @endsection
 
 @section('content')
@@ -23,13 +25,6 @@
             <option value="1">League of Legends</option>
         </select>
 
-    {{--@foreach ($teams as $team)--}}
-            {{--<div class="col-lg-6">--}}
-                {{--<div class="team_card">--}}
-                   {{--<h1> Description : {{$team->description}} </h1>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--@endforeach--}}
     </div>
 
 

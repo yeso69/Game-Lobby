@@ -26,7 +26,12 @@ Route::get('/about', function () {
 Route::get('/users/addGame','UserController@loadAddGame');
 
 Route::get('/teams/list', 'TeamController@showAllTeams')->name('teams.list');
-Route::post('/teams/getTeamsByGame', 'TeamController@getTeamsByGame')->name('teams.getTeamsGame');
+Route::post('/teams/getTeamsByGame', 'TeamController@getTeamsByGame')->name('teams.getTeamsByGame');
+Route::get('/teams/showT/{id_team}','TeamController@showTeamById');
+Route::get('/teams/show_team', function(){
+    return view('teams.show_team');
+});
+
 
 Route::resource('teams', 'TeamController');
 
