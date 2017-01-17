@@ -49,7 +49,7 @@
                 </div>
             @else
                 <div class="leftbar_menuitem">
-                    <span ><a href="/users/showInfo">Mon compte</a></span>
+                    <span ><a href="/users/{{Auth::user()->id}}/edit">Mon compte</a></span>
                 </div>
                     <div class="leftbar_menuitem">
                         <span ><a href="{{ route('teams.list') }}">Teams</a></span>
@@ -70,7 +70,8 @@
                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
-                </li>
+
+                    </li>
                 </li>
             @endif
     </div>

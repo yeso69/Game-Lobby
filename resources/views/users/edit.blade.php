@@ -1,33 +1,45 @@
+
 @extends('main')
 
+@section('title', '| Mon compte')
+
+@section('stylesheets')
+    <link rel="stylesheet" href="{{ URL('/css/browse_players.css') }}">
+    <link rel="stylesheet" href="{{ URL('/css/player_card.css') }}">
+
+    <script type="text/javascript" src="{{ URL('/js/player_card.js') }}"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+@endsection
+
 @section('content')
-    <h1>Modifier mes infos générale</h1>
-    {!! Form::open(['route'=>['users.update',Auth::user()->id],'method'=>'PATCH']) !!}
+    <h1>Modifier mes infos générale {{ Auth::user()->id }}</h1>
+    <div class="col-lg-10" id="browse_teams">
+        <h1>Teams</h1>
 
+    {!! Form::open(['route'=>['users.update',Auth::user()->id],'method'=>'PATCH','files' =>true]) !!}
 
-    {{ Form::label('name','Nom:') }}
-    {{Form::text('name',Auth::user()->name,array('class' => 'form-control'))}}
+        {{ Form::label('name','Nom:') }}
+        {{Form::text('name',Auth::user()->name,array('class' => 'form-control'))}}
 
-    {{ Form::label('email','Email:') }}
-    {{Form::text('email',Auth::user()->email,array('class' => 'form-control'))}}
+        {{ Form::label('email','Email:') }}
+        {{Form::text('email',Auth::user()->email,array('class' => 'form-control'))}}
 
-    {{ Form::label('password','Mot de passe:') }}
-    {{Form::password('password',['class' => 'form-control'])}}
+        {{ Form::label('password','Mot de passe:') }}
+        {{Form::password('password',['class' => 'form-control'])}}
 
-    {{ Form::label('steam','Compte Steam:') }}
-    {{Form::text('steam',Auth::user()->steam,array('class' => 'form-control'))}}
+        {{ Form::label('image','Image de profil :') }}
+        {{ Form::file('image') }}
 
-    {{ Form::label('cs_level','Niveau CS:GO:') }}
-    {{Form::text('cs_level',Auth::user()->cs_level,array('class' => 'form-control'))}}
+        <div class="col-lg-10" id="browse_players">
+            <img src="{{ URL(Auth::user()->image)}}" alt="Smiley face" height="100" width="100">
+        </div>
 
-    {{ Form::label('lol_level','Niveau League Of Legends:') }}
-    {{Form::text('lol_level',Auth::user()->lol_level,array('class' => 'form-control'))}}
+        {{ Form::submit('Valider',array('class' => 'btn btn-success btn-lg btn-block')) }}
 
-    {{ Form::label('rl_level','Niveau Rocket League:') }}
-    {{Form::text('rl_level',Auth::user()->rl_level,array('class' => 'form-control'))}}
-
-
-    {{ Form::submit('Valider',array('class' => 'btn btn-success btn-lg btn-block')) }}
     {!! Form::close() !!}
 
+
+
+</div>
 @endsection

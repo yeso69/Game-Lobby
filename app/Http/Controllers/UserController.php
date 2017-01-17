@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use phpDocumentor\Reflection\File;
 
 class UserController extends Controller
 {
@@ -26,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+
+
+
     }
 
     /**
@@ -44,8 +48,8 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
+
     public function show()
     {
         if (!Auth::check()) return view("auth.login");
@@ -76,28 +80,35 @@ class UserController extends Controller
     {
 
         //Validating the data
-        $this->validate($request, array(
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-//            'password' => 'min:6',
-            'steam' => 'required|max:255',
-//            'cs_level' => 'numeric',
-//            'lol_level' => 'numeric',
-//            'rl_level' => 'numeric',
-        ));
 
         //store in the database
+
         $user = User::find($id);
+
+
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
-        $user->save();//save in db
+        $user->password = bcrypt($request->password);
+        if(isset($request->image)){
+            $user->image = $request->image;
+            $file = Input::file('image');
+            $extension = $file->getMimeType();
+            //dd($file);
 
-        return redirect('/home');
+            $destinationPath = 'images/';
+            $filename = $file->getClientOriginalName();
+            Input::file('image')->move($destinationPath, $filename);
+            $user->image = $destinationPath.$filename;
+        }
+        $user->save();
+
+
+
+        return redirect('/');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

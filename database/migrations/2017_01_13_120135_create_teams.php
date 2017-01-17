@@ -14,7 +14,7 @@ class CreateTeams extends Migration
     public function up()
     {
         Schema::create('teams', function (Blueprint $table) {
-            $table->increments('id_team')->index();
+            $table->integer('id_team')->index();
             $table->integer('id_game');
             $table->integer('id_admin');
             $table->string('description');
