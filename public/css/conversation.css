@@ -11,20 +11,34 @@
 
 .bloc_message_received{
     background-color: white;
-    height: 80px;
+    min-height: 80px;
     border-radius: 5px;
     margin-top: 15px;
-
 }
 
 .bloc_message_sent{
     background-color: steelblue;
-    height: 80px;
+    min-height: 80px;
     border-radius: 5px;
     margin-top: 15px;
 }
 
+.messageLogin {
+    color: lightgray;
+    font-weight: bold;
+}
+
+.messageHour{
+    color: lightgray;
+    float: right;
+}
+.messageBody{
+    width: 200px;
+    word-wrap: break-word;
+}
+
 #bloc_send_message form{
+    margin-top: 10px;
     padding: 0px;
     height: 100px;
 }

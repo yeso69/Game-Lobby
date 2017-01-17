@@ -21,40 +21,14 @@ function changeGame(){
     }).done(function(data){
         data = JSON.parse(data);
         $.each(data,function(i){
-            if (data[i]['id_game'] ==  1){
-                $("#browse_players").append(
-                    '<div class="col-lg-3">'+
-                        '<div class="player_card">' +
-                            '<div class="col-lg-4 player_resume">' +
-                            '</div>' +
-                            '<div>Pseudo:' + data[i]["pseudo"] + '</div>'+
-                            '<div>Level:' + data[i]["level"] + '</div>'+
-                            '<div>Poste:' + data[i]["position"] + '</div>'+
-                            '<div>Description:' + data[i]["description"] + '</div>'+
-                            '<div>Recherche:' + data[i]["search"] + '</div>'+
-                            '<a href="/message/showConv/' + data[i]["id_user"] + '"><button>Envoyer un message</button></a>' +
-                        '</div>' +
-                    '</div>')
-            }else {
-                $("#browse_players").append(
-                    '<div class="col-lg-3 ' + i + '">'+
-                        '<div class="player_card">' +
-                            '<div class="col-lg-4 player_resume">' +
-                            '</div>' +
-                            '<div>Pseudo:' + data[i]["pseudo"] + '</div>'+
-                            '<div>Level:' + data[i]["level"] + '</div>'+
-                            '<div>Description:' + data[i]["description"] + '</div>'+
-                            '<div>Recherche:' + data[i]["search"] + '</div>'+
-                            '<a href="/message/showConv/' + data[i]["id_user"] + '"><button>Envoyer un message</button></a>' +
-                        '</div>' +
-                    '</div>');
-            }
+                $("#browse_players").append(createCard(data[i]));
         });
         $("#level").val("");
         $("#level").children().css("display","none");
-        $("#level").children("."+$('#choose_game').val()).css("display","initial");
+        $("#level").children("."+$('#choose_game').val()).css("display","block");
     })
 }
+
 function changeRank() {
     $("#browse_players").children().each(function(){
         $(this).remove();
@@ -74,32 +48,39 @@ function changeRank() {
     }).done(function(data){
         data = JSON.parse(data);
         $.each(data,function(i){
-            if (data[i]['id_game'] ==  1){
-                $("#browse_players").append(
-                    '<div class="col-lg-3">'+
-                    '<div class="player_card">' +
-                    '<div class="col-lg-4 player_resume">' +
-                    '</div>' +
-                    '<div>Pseudo:' + data[i]["pseudo"] + '</div>'+
-                    '<div>Level:' + data[i]["level"] + '</div>'+
-                    '<div>Poste:' + data[i]["position"] + '</div>'+
-                    '<div>Description:' + data[i]["description"] + '</div>'+
-                    '<div>Recherche:' + data[i]["search"] + '</div>'+
-                    '</div>' +
-                    '</div>')
-            }else {
-                $("#browse_players").append(
-                    '<div class="col-lg-3 ' + i + '">'+
-                    '<div class="player_card">' +
-                    '<div class="col-lg-4 player_resume">' +
-                    '</div>' +
-                    '<div>Pseudo:' + data[i]["pseudo"] + '</div>'+
-                    '<div>Level:' + data[i]["level"] + '</div>'+
-                    '<div>Description:' + data[i]["description"] + '</div>'+
-                    '<div>Recherche:' + data[i]["search"] + '</div>'+
-                    '</div>' +
-                    '</div>');
-            }
+            $("#browse_players").append(createCard(data[i]))
         });
     });
+}
+
+function createCard(data) {
+    var logos = $("<div></div>");
+    console.log("test");
+    $.each(data["allGames"], function (i,val) {
+        logos.append("<div class='col-lg-4 container_logo'><img src='../img/"+val["logo"]+"'></div>")
+    });
+
+    var poste = "";
+    if (data.id_game == 1) poste = '<span class="title_fiche">Poste:</span><span class="info_fiche">' + data["position"] + '</span>'
+
+    return ''+
+        '<div class="col-lg-3">'+
+        '<div class="player_card">' +
+        '<div class="col-lg-4 player_resume text-center">' +
+        '<img class="img-circle img-responsive" src="../img/nopic.png">' +
+        '<span>'+data["name"]+'</span>'+
+        '<div class="col-lg-12">'+logos.html()+'</div>' +
+        '</div>' +
+        '<div class="col-lg-8 text-center">' +
+
+        '<span class="title_fiche">Pseudo In-Game:</span><span class="info_fiche">' + data["pseudo"] + '</span>'+
+        '<span class="title_fiche">Level:</span><span class="info_fiche">' + data["level"] + '</span>'+
+        poste+
+        '<span class="title_fiche">Description:</span><span class="info_fiche">' + data["description"] + '</span>'+
+        '<span class="title_fiche">Recherche:</span><span class="info_fiche">' + data["search"] + '</span>'+
+
+        '<div class="col-lg-12"><a href="/message/showConv/' + data["id_user"] + '"><button><span class="glyphicon glyphicon-envelope"></span></button></a></div>'+
+        '</div>'+
+        '</div>'+
+        '</div>';
 }

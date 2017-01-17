@@ -15,6 +15,10 @@
     box-shadow: 0 8px 6px -6px black;
 }
 
+.player_card button{
+    margin-top: 15px;
+}
+
 .player_resume{
     height: 100%;
     padding: 5px;
@@ -26,4 +30,27 @@
     height: auto;
     margin-left: auto;
     margin-right: auto;
+}
+
+
+.player_resume .col-lg-12{
+    padding: 0;
+}
+
+.container_logo{
+    padding: 0;
+}
+
+.container_logo img{
+    width: 100%;
+    height: auto;
+}
+
+.title_fiche{
+    color: green;
+    float: left;
+}
+
+.info_fiche{
+    float: right;
 }
