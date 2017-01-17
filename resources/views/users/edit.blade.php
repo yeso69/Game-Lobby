@@ -13,9 +13,8 @@
 @endsection
 
 @section('content')
-    <h1>Modifier mes infos générale {{ Auth::user()->id }}</h1>
     <div class="col-lg-10" id="browse_teams">
-        <h1>Teams</h1>
+        <h1>Mes Infos</h1>
 
     {{ Form::open(['route'=>['users.update',Auth::user()->id],'method'=>'PATCH','files' =>true]) }}
 
@@ -28,14 +27,10 @@
         {{ Form::label('password','Mot de passe:') }}
         {{Form::password('password',['class' => 'form-control'])}}
 
-        {{ Form::label('image','Image de profil :') }}
+        {{ Form::label('image','Image de profil :') }}<br>
+        <img src="{{ URL(Auth::user()->image)}}" alt="No Image" height="100" width="100">
         {{ Form::file('image') }}
-
-        <div class="col-lg-10" id="browse_players">
-            <img src="{{ URL(Auth::user()->image)}}" alt="Smiley face" height="100" width="100">
-        </div>
-
-        {{ Form::submit('Valider',array('class' => 'btn btn-success btn-lg btn-block')) }}
+        {{ Form::submit('Valider',array('class' => 'btn btn-success')) }}
 
     {{ Form::close() }}
 

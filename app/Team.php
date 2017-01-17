@@ -49,11 +49,22 @@ class Team extends Model
 
     public function getUserByTeam($id_team,$id_game){
         $user = DB::table('game_user')
-            ->select('game_user.*')
+            ->select('game_user.*', 'users.name', 'users.image')
             ->join('team_user','game_user.id_user','=','team_user.id_user')
             ->where('team_user.id_team', '=', $id_team)
             ->where('game_user.id_game', '=', $id_game)
+            ->join('users',"game_user.id_user",'=','users.id')
             ->get();
+
+        foreach ($user as $g){
+            $g->allGames = DB::table('games')
+                ->select('games.logo')
+                ->from('games')
+                ->join('game_user','game_user.id_game','=','games.id_game')
+                ->where('game_user.id_user','=',$g->id_user)
+                ->get();
+        }
         return $user;
+
     }
 }
