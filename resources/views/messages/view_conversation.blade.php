@@ -28,7 +28,6 @@
                             </div>
                         </div>
                     @else
-                        <?php $receiver = $message->sender; ?>
                         <div class="row">
                             <div class="bloc_message_received col-lg-9 col-lg-offset-3">
                                 {{ $message->body }}

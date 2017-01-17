@@ -20,10 +20,11 @@ class MessageController extends Controller
         echo json_encode($result);
     }
 
+
     public function showConv(Request $request){
         $model = new Message();
         $result = $model->getConversation($request->id);
-        return view('messages.view_conversation')->with(['messages'=>$result->toArray()]);
+        return view('messages.view_conversation')->with(['messages'=>$result->toArray(),'receiver'=>$request->id]);
     }
 
     public function index()
