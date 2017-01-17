@@ -25,13 +25,6 @@
             <option value="1">League of Legends</option>
         </select>
 
-    {{--@foreach ($teams as $team)--}}
-            {{--<div class="col-lg-6">--}}
-                {{--<div class="team_card">--}}
-                   {{--<h1> Description : {{$team->description}} </h1>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--@endforeach--}}
     </div>
 
 

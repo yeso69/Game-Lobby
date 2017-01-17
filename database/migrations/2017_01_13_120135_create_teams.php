@@ -18,7 +18,7 @@ class CreateTeams extends Migration
             $table->integer('id_game');
             $table->integer('id_admin');
             $table->string('description');
-            //$table->string('name');
+            $table->string('name_team');
             $table->foreign('id_game')->references('id_game')->on('games');
             $table->foreign('id_admin')->references('id')->on('users');
         });
