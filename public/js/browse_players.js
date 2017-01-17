@@ -67,7 +67,7 @@ function createCard(data) {
         '<div class="col-lg-3">'+
         '<div class="player_card">' +
         '<div class="col-lg-4 player_resume text-center">' +
-        '<img class="img-circle img-responsive" src="../img/nopic.png">' +
+        '<img class="img-responsive img-rounded" src="'+data["image"]+'">' +
         '<span>'+data["name"]+'</span>'+
         '<div class="col-lg-12">'+logos.html()+'</div>' +
         '</div>' +

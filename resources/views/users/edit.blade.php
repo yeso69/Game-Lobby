@@ -13,18 +13,10 @@
 @endsection
 
 @section('content')
-
     <div class="col-lg-10" id="browse_teams">
-        <h1>Mon compte </h1>
+        <h1>Mes Infos</h1>
 
     {{ Form::open(['route'=>['users.update',Auth::user()->id],'method'=>'PATCH','files' =>true]) }}
-
-
-        {{ Form::label('image','Image de profil :') }}
-        {{ Form::file('image') }}
-
-
-        <img src="{{ URL(Auth::user()->image)}}" alt="Smiley face" height="100" width="100">
 
         {{ Form::label('name','Nom:') }}
         {{Form::text('name',Auth::user()->name,array('class' => 'form-control'))}}
@@ -35,10 +27,10 @@
         {{ Form::label('password','Mot de passe:') }}
         {{Form::password('password',['class' => 'form-control'])}}
 
-
-
-
-        {{ Form::submit('Valider',array('class' => 'btn btn-success btn-lg btn-block')) }}
+        {{ Form::label('image','Image de profil :') }}<br>
+        <img src="{{ URL(Auth::user()->image)}}" alt="No Image" height="100" width="100">
+        {{ Form::file('image') }}
+        {{ Form::submit('Valider',array('class' => 'btn btn-success')) }}
 
     {{ Form::close() }}
 
