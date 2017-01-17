@@ -39,6 +39,7 @@
             <div class="row">
             <div class="col-lg-8 col-lg-offset-2" id="bloc_send_message">
                 <form method="POST" action="{{ URL('/message/sendMessage') }}">
+                    {{csrf_field()}}
                     <div class="col-lg-9">
                         <textarea name="body"></textarea>
                     </div>

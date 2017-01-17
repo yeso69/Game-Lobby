@@ -38,5 +38,9 @@ class Message extends Model
 
     }
 
+    public function insertMessage($data){
+        DB::table('messages')->insert($data);
+    }
+
 
 }

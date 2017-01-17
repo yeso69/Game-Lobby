@@ -25,10 +25,6 @@ Route::get('/about', function () {
 
 Route::get('/users/addGame','UserController@loadAddGame');
 
-
-
-
-
 Route::get('/teams/list', 'TeamController@showAllTeams')->name('teams.list');
 
 Route::resource('teams', 'TeamController');
@@ -48,9 +44,10 @@ Route::post('/users/addGameData','UserController@addGameData');
 Route::post('/users/editGameData','UserController@editGameData');
 Route::post('/players/getPlayersByGame','PlayersController@getPlayersByGame');
 Route::post('/players/getPlayersByGameAndLevel','PlayersController@getPlayersByGameAndLevel');
+Route::post('/message/sendMessage','MessageController@sendMessage');
 
 
 
 
 Route::get('/message/getConv','MessageController@getConv')->name('message.getConv');
-Route::get('/message/showConv/{id}','MessageController@showConv')->name('message.getConv');
+Route::get('/message/showConv/{id}','MessageController@showConv')->name('message.showConv');

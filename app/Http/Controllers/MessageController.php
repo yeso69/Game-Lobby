@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -25,6 +27,18 @@ class MessageController extends Controller
         $model = new Message();
         $result = $model->getConversation($request->id);
         return view('messages.view_conversation')->with(['messages'=>$result->toArray(),'receiver'=>$request->id]);
+    }
+
+    public function sendMessage(Request $request){
+        $model = new Message();
+        $data = $request->input();
+        unset($data["_token"]);
+        $data["sender"] = Auth::user()->id;
+        $data["created_at"] = Carbon::now();
+            $data["updated_at"] = Carbon::now();
+        $model->insertMessage($data);
+
+        return redirect()->route("message.showConv",$data["receiver"]);
     }
 
     public function index()
