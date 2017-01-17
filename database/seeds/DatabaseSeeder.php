@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class FriendsTableSeeder extends Seeder
+class DatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,7 @@ class FriendsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Team::class, 5)->create();
+        $this->call('TeamsTableSeeder');
+
     }
 }

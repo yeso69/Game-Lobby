@@ -7,14 +7,17 @@
  */
 
 ?>
-<head>
+
+@extends('main')
+@section('stylesheets')
     <link rel="stylesheet" href="{{ URL('/css/browse_players.css') }}">
     <link rel="stylesheet" href="{{ URL('/css/player_card.css') }}">
 
     <script type="text/javascript" src="{{ URL('/js/player_card.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-</head>
-@extends('main')
+@endsection
+@section('title', '| Browse players')
+
 @section('content')
 
         <body>
