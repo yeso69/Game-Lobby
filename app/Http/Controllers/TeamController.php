@@ -111,6 +111,7 @@ class TeamController extends Controller
     public function showTeamById(Request $request){
         $teamModel = new Team();
         $data = $teamModel->getTeamById($request->id_team);
-        return view('teams.show_team',["data" =>$data->toArray()]);
+        $user = $teamModel->getUserByTeam($request->id_team,$data[0]->id_game);
+        return view('teams.show_team',["data" =>$data->toArray(),"user" =>$user->toArray()]);
     }
 }
