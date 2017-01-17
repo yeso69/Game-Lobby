@@ -17,7 +17,7 @@
     <div class="col-lg-10" id="browse_teams">
         <h1>Teams</h1>
 
-    {!! Form::open(['route'=>['users.update',Auth::user()->id],'method'=>'PATCH','files' =>true]) !!}
+    {{ Form::open(['route'=>['users.update',Auth::user()->id],'method'=>'PATCH','files' =>true]) }}
 
         {{ Form::label('name','Nom:') }}
         {{Form::text('name',Auth::user()->name,array('class' => 'form-control'))}}
@@ -37,7 +37,7 @@
 
         {{ Form::submit('Valider',array('class' => 'btn btn-success btn-lg btn-block')) }}
 
-    {!! Form::close() !!}
+    {{ Form::close() }}
 
 
 
