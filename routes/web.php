@@ -36,4 +36,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/findPlayers', 'FriendController@index');
+Route::get('/users/editGame/{id_game}', 'UserController@editGame');
+Route::get('/users/deleteGame/{id_game}', 'UserController@deleteGame');
 Route::post('/users/addGameData','UserController@addGameData');
+Route::post('/users/editGameData','UserController@editGameData');
+
+

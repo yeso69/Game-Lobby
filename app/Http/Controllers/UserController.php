@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller
 {
@@ -121,5 +122,28 @@ class UserController extends Controller
         $userModel = new User();
         $data = $userModel->getGameUser(Auth::user()->id);
         return view('users.addGame',["data" =>$data->toArray()]);
+    }
+
+    public function editGame(Request $request){
+        $userModel = new User();
+        $id_game = $request->id_game;
+        $data = $userModel->getGameByIdUser(Auth::user()->id,$id_game);
+        return view('users.editGame',["data" =>$data->toArray()]);
+    }
+
+    public function editGameData(Request $request){
+        $data = $request->input();
+        unset($data["_token"]);
+        $data['id_user'] = Auth::user()->id;
+        $userModel = new User();
+        $userModel->updateGameData($data);
+        return redirect()->route('users.show',Auth::user());
+    }
+
+    public function deleteGame(Request $request){
+        $userModel = new User();
+        $id_game = $request->id_game;
+        $userModel->deleteGame(Auth::user()->id,$id_game);
+        return redirect()->route('users.show',Auth::user());
     }
 }
