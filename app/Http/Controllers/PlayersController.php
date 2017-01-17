@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\GameLevel;
+use App\Players;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class GameLevelController extends Controller
+class PlayersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,6 +18,21 @@ class GameLevelController extends Controller
         //
     }
 
+    public function getPlayersByGame(Request $request){
+        $id_game = $request->input('id_game');
+        $playersModel = new Players();
+        $data = $playersModel->getPlayersByGame(Auth::user()->id,$id_game);
+        return json_encode($data);
+    }
+
+    public function getPlayersByGameAndLevel(Request $request){
+        $id_game = $request->input('id_game');
+        $level = $request->input('level');
+        $playersModel = new Players();
+        $data = $playersModel->getPlayersByGameAndLevel(Auth::user()->id,$id_game,$level);
+        return json_encode($data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +40,6 @@ class GameLevelController extends Controller
      */
     public function create()
     {
-        return view('levels.create');
     }
 
     /**

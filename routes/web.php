@@ -23,13 +23,17 @@ Route::get('/about', function () {
     return view('pages.about');
 });
 
-Route::get('/users/addGame', function () {
-    return view('users.addGame');
-});
+Route::get('/users/addGame','UserController@loadAddGame');
+
+
+
+
+
+Route::get('/teams/list', 'TeamController@showAllTeams')->name('teams.list');
+
+Route::resource('teams', 'TeamController');
 
 Route::resource('friends', 'FriendController');
-
-//Route::resource('message', 'MessageController');
 
 Route::resource('levels', 'GameLevelController');
 
@@ -38,6 +42,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/findPlayers', 'FriendController@index');
+Route::get('/users/editGame/{id_game}', 'UserController@editGame');
+Route::get('/users/deleteGame/{id_game}', 'UserController@deleteGame');
 Route::post('/users/addGameData','UserController@addGameData');
+Route::post('/users/editGameData','UserController@editGameData');
+Route::post('/players/getPlayersByGame','PlayersController@getPlayersByGame');
+Route::post('/players/getPlayersByGameAndLevel','PlayersController@getPlayersByGameAndLevel');
+
+
+
+
 Route::get('/message/getConv','MessageController@getConv')->name('message.getConv');
 Route::get('/message/showConv/{id}','MessageController@showConv')->name('message.getConv');

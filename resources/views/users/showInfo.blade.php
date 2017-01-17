@@ -17,11 +17,13 @@
             @if ($game->id_game === 1)
                 Poste : {{$game->position}}
             @endif
+            <a href="/users/editGame/{{$game->id_game}}" ><button>Modifier</button></a>
+            <a href="/users/deleteGame/{{$game->id_game}}" ><button>Supprimer</button></a>
         </div><br><br>
     @endforeach
 
     @if(count($data) != 3)
-        <a href="/users/addGame" ><button>Ajouter des jeux</button></a>
+        <a href="/users/addGame/"><button>Ajouter des jeux</button></a>
     @endif
 
 @endsection

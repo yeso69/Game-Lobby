@@ -51,6 +51,9 @@
                 <div class="leftbar_menuitem">
                     <span ><a href="/users/showInfo">Mon compte</a></span>
                 </div>
+                    <div class="leftbar_menuitem">
+                        <span ><a href="{{ route('teams.list') }}">Teams</a></span>
+                    </div>
                 <div id="message_button" class="leftbar_menuitem">
                     <span id="message_button_title"><a href="#">Messages  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></span>
                     <div id="bloc_conversations">

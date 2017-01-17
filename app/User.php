@@ -34,11 +34,33 @@ class User extends Authenticatable
             ->join('games', 'game_user.id_game', '=', 'games.id_game')
             ->where('game_user.id_user', '=', $id)
             ->get();
+        return $game;
+    }
+
+    public function getGameByIdUser($id,$id_game){
+        $game = DB::table('game_user')
+            ->select('game_user.*' , 'games.*')
+            ->join('games', 'game_user.id_game', '=', 'games.id_game')
+            ->where('game_user.id_user', '=', $id)
+            ->where('game_user.id_game', '=', $id_game)
+            ->get();
 
         return $game;
     }
 
     public function insertGame($data){
         DB::table('game_user')->insert($data);
+    }
+
+    public function updateGameData($data){
+        DB::table('game_user')
+            ->where('id_game',$data["game_name"])
+            ->where('id_user',$data["id_user"])
+            ->update(['level'=>$data['level'],'description'=>$data['description'],'search'=>$data["search"],
+                'position'=>$data["position"],'pseudo'=>$data["pseudo"]]);
+    }
+
+    public function deleteGame($id_user,$id_game){
+        DB::table('game_user')->where('id_user','=',$id_user)->where('id_game','=',$id_game)->delete();
     }
 }

@@ -2,32 +2,26 @@
 
 @section('content')
     <script>
-    var data = '<?php echo json_encode($data); ?>';
+        $(function () {
+            $("#level").children().css("display", "none");
+            $("#level").children("." + <?= $data[0]->id_game;?> ).css("display", "initial");
+            if  (<?= $data[0]->id_game;?> == 1){
+                $("#poste").fadeIn();
+            }
+            $("#level").val("<?= $data[0]->level;?>");
+        });
     </script>
-    <script type="text/javascript" src="{{ URL('/js/add_game.js') }}"></script>
 
+    Modifier vos infos pour {{$data[0]->name}}:
 
-    Ajouter un jeu :
-
-    <form class="form-horizontal" role="form" method="POST" action="{{ url('/users/addGameData') }}">
+    <form class="form-horizontal" role="form" method="POST" action="{{ url('/users/editGameData') }}">
         {{ csrf_field() }}
 
         <div class="{{ $errors->has('game_name') ? ' has-error' : '' }}">
             <label for="game_name" class="col-md-4 control-label">Jeu</label>
-
             <div class="col-md-6">
-                <select id="game_name" class="form-control" name="id_game" value="{{ old('id_game') }}" required autofocus onchange="changeGame()">
-                    <option>Sélectionner un Jeu</option>
-                    <option value="1">League of Legends</option>
-                    <option value="2">Rocket League</option>
-                    <option value="3">CS GO</option>
-                </select>
-
-                @if ($errors->has('id_game'))
-                    <span class="help-block">
-                                        <strong>{{ $errors->first('id_game') }}</strong>
-                                    </span>
-                @endif
+            <input type="text" class="form-control" name="game_name" value="{{ $data[0]->name}}" required autofocus disabled>
+            <input id="game_name" type="text" class="form-control" name="game_name" value="{{ $data[0]->id_game}}" style="display:none;">
             </div>
         </div>
 
@@ -35,7 +29,7 @@
             <label for="pseudo" class="col-md-4 control-label">Pseudo</label>
 
             <div class="col-md-6">
-                <input id="pseudo" type="text" class="form-control" name="pseudo" value="{{ old('pseudo') }}" required autofocus>
+                <input id="pseudo" type="text" class="form-control" name="pseudo" value="{{ $data[0]->pseudo }}" required autofocus>
 
                 @if ($errors->has('pseudo'))
                     <span class="help-block">
@@ -49,7 +43,7 @@
             <label for="level" class="col-md-4 control-label">Niveau rank</label>
 
             <div class="col-md-6">
-                <select id="level" class="form-control" name="level" value="{{ old('level') }}" required autofocus>
+                <select id="level" class="form-control" name="level" value="{{$data[0]->level}}" required autofocus>
                     <option>Sélectionner un rank</option>
                     <!--LOL-->
                     <option class="1" value="unranked">Unranked</option>
@@ -107,7 +101,7 @@
             <label for="position" class="col-md-4 control-label">Poste sur lol</label>
 
             <div class="col-md-6">
-                <input id="position" type="text" class="form-control" name="position" value="{{ old('position') }}" autofocus>
+                <input id="position" type="text" class="form-control" name="position" value="{{$data[0]->position}}"  autofocus>
 
                 @if ($errors->has('position'))
                     <span class="help-block">
@@ -121,9 +115,9 @@
             <label for="description" class="col-md-4 control-label">Description de vous sur le jeu</label>
 
             <div class="col-md-6">
-                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" required autofocus>
+                <input id="description" type="text" class="form-control" name="description" value="{{$data[0]->description}}" required autofocus>
 
-            @if ($errors->has('description'))
+                @if ($errors->has('description'))
                     <span class="help-block">
                                         <strong>{{ $errors->first('description') }}</strong>
                                     </span>
@@ -135,9 +129,9 @@
             <label for="search" class="col-md-4 control-label">Type de joueur recherché</label>
 
             <div class="col-md-6">
-                <input id="search" type="text" class="form-control" name="search" value="{{ old('search') }}" required autofocus>
+                <input id="search" type="text" class="form-control" name="search" value="{{$data[0]->search}}" required autofocus>
 
-            @if ($errors->has('search'))
+                @if ($errors->has('search'))
                     <span class="help-block">
                                         <strong>{{ $errors->first('search') }}</strong>
                                     </span>

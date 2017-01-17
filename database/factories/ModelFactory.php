@@ -33,6 +33,15 @@ $factory->define(App\Friend::class, function (Faker\Generator $faker) {
     ];
 });
 
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Team::class, function (Faker\Generator $faker) {
+
+    return [
+        'id' => factory(App\User::class)->create()->id,
+        'user_2' => factory(App\User::class)->create()->id,
+    ];
+});
+
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\GameLevel::class, function (Faker\Generator $faker) {
