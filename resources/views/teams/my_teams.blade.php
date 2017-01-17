@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '| My Team')
+@section('title', '| My Teams')
 
 @section('content')
 

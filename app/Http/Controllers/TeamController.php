@@ -6,6 +6,7 @@ use App\Message;
 use App\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
 class TeamController extends Controller
@@ -46,8 +47,29 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image = false;
+        if(!isset($request['image'])){
+           $image = 'img/nopic.png';
+        }
+        else{
+            $file = Input::file('image');
+            $destinationPath = 'images_team/';
+            $filename = $file->getClientOriginalName();
+            Input::file('image')->move($destinationPath, $filename);
+            $image = $destinationPath.$filename;
+            //dd($destinationPath.$filename);
+        }
+        Team::create([
+            'name_team' => $request['name_team'],
+            'id_admin' => $request['id_admin'],
+            'description' => $request['description'],
+            'id_game' => $request['id_game'],
+            'image' => $image //filename....
+        ]);
+
+        return redirect()->route('teams.myTeams');
     }
+
 
     /**
      * Display the specified resource.

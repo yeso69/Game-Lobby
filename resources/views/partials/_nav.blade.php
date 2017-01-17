@@ -43,24 +43,24 @@
                     <span ><a href="/register" role="button" aria-haspopup="true" aria-expanded="false">S'inscrire</a></span>
                 </div>
             @else
-
                 <div class="leftbar_menuitem">
                     <span ><a href="/users/{{Auth::user()->id}}/edit">Mon compte</a></span>
                 </div>
-
-
-                <div class="leftbar_menuitem" style="margin-top: 30px">
-                    <span ><a href="/users/showInfo">Mes jeux</a></span>
-                </div>
-                <div class="leftbar_menuitem">
-                    <span ><a href="{{ route('teams.myTeams') }}">Mes Teams</a></span>
-                </div>
-                <div class="leftbar_menuitem" >
-                    <span ><a href="{{ route('teams.create') }}">Créer une Team</a></span>
-                </div>
-                <div class="leftbar_menuitem" style="margin-top: 30px">
-                    <span ><a href="{{ route('teams.showNewRequests') }}">Requêtes</a></span>
-                </div>
+                    <div class="leftbar_menuitem">
+                        <span ><a href="/users/showInfo">Mes jeux</a></span>
+                    </div>
+                        <div class="leftbar_menuitem">
+                            <span ><a href="/findPlayers">Trouver des joueurs</a></span>
+                        </div>
+                    <div class="leftbar_menuitem">
+                        <span ><a href="{{ route('teams.list') }}">Trouver des Teams</a></span>
+                    </div>
+                    <div class="leftbar_menuitem">
+                        <span ><a href="{{ route('teams.myTeams') }}">Mes Teams</a></span>
+                    </div>
+                    <div class="leftbar_menuitem">
+                        <span ><a href="{{ route('teams.index') }}">Créer une Team</a></span>
+                    </div>
                 <div id="message_button" class="leftbar_menuitem">
                     <span id="message_button_title"><a href="#">Messages</span></a></span>
                     <div id="bloc_conversations">
