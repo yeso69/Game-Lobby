@@ -21,6 +21,7 @@ function changeGame(){
                 '<div> Jeu :' + data[i]["name"]  + '</div>' +
                 '<div> Nom :' + data[i]["name_team"]  + '</div>' +
                 '<div> Description :' + data[i]["description"]  + '</div>' +
+                    '<a href="/teams/showT/' + data[i]["id_team"]  + '"><button>Voir résumé</button></a>' +
             '</div>' +
             '</div>');
         })

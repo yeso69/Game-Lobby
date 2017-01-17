@@ -57,7 +57,7 @@ class TeamController extends Controller
      */
     public function show($id)
     {
-       $this->showAllTeams();
+       //
     }
 
     /**
@@ -106,5 +106,11 @@ class TeamController extends Controller
         $teamModel = new Team();
         $data = $teamModel->getTeamsByGame($request->id_game,Auth::user()->id);
         return json_encode($data);
+    }
+
+    public function showTeamById(Request $request){
+        $teamModel = new Team();
+        $data = $teamModel->getTeamById($request->id_team);
+        return view('teams.show_team',["data" =>$data->toArray()]);
     }
 }
