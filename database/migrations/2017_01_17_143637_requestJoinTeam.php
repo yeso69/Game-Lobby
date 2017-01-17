@@ -14,6 +14,7 @@ class RequestJoinTeam extends Migration
     public function up()
     {
         Schema::create('requestJoinTeam', function (Blueprint $table) {
+            $table->increments('id_request')->index();
             $table->integer('user_id');
             $table->integer('team_id');
             $table->boolean('deliberated')->default(false);

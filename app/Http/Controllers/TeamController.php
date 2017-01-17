@@ -131,4 +131,11 @@ class TeamController extends Controller
         $teamModel = new Team();
         $teamModel->suppUserFromTeam($id_user,$id_team);
     }
+
+    public function showNewRequests(){
+        $teamModel = new Team();
+        $data = $teamModel->getAllRequest();
+        return view('teams.requests',["data" =>$data]);
+    }
+
 }

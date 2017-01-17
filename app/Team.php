@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class Team extends Model
 {
@@ -20,6 +21,17 @@ class Team extends Model
         $team = DB::table('teams')
             ->select('teams.*')
             ->where('teams.id', '=', $id)
+            ->get();
+        return $team;
+    }
+
+    public function getAllRequest(){
+        $team = DB::table('requestjointeam')
+            ->select('requestjointeam.*','users.name', 'teams.name_team')
+            ->join('teams','teams.id_team','=','requestjointeam.team_id')
+            ->join('users','users.id','=','requestjointeam.user_id')
+            ->where('deliberated', '=', 0)
+            ->where('teams.id_admin', '=', Auth::user()->id)
             ->get();
         return $team;
     }

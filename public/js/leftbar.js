@@ -22,6 +22,7 @@ $(function () {
     messageUpdater = setInterval(function () {
         var conv, pseudo;
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
         $.ajax({
             type: 'GET',
             url: '/message/getConv',
@@ -42,7 +43,7 @@ $(function () {
                 console.log(data);
             }
         });
-    },5000)
+    },3000);
 
 
 })

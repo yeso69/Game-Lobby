@@ -1,0 +1,21 @@
+#view_request{
+    height: 100vh;
+}
+
+.block_request{
+    font-size: 20px;
+    margin-top: 50px;
+    height: 200px;
+    background-color: #414141;
+    color: whitesmoke;
+}
+
+.from, .time{
+    height: 50px;
+    line-height: 50px;
+}
+
+#acceptButton, #declineButton{
+    margin-top: 30px;
+}
+

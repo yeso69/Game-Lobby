@@ -26,6 +26,7 @@ Route::get('/about', function () {
 Route::get('/users/addGame','UserController@loadAddGame');
 
 Route::get('/teams/list', 'TeamController@showAllTeams')->name('teams.list');
+Route::get('/teams/showNewRequests', 'TeamController@showNewRequests')->name('teams.showNewRequests');
 Route::post('/teams/getTeamsByGame', 'TeamController@getTeamsByGame')->name('teams.getTeamsByGame');
 Route::get('/teams/myTeams', 'TeamController@myTeams')->name('teams.myTeams');
 Route::get('/teams/showT/{id_team}','TeamController@showTeamById');
@@ -58,4 +59,5 @@ Route::post('/message/sendMessage','MessageController@sendMessage');
 
 Route::get('/message/getConv','MessageController@getConv')->name('message.getConv');
 Route::get('/message/showConv/{id}','MessageController@showConv')->name('message.showConv');
+Route::get('/teams/showConv/{id}','MessageController@showConv')->name('message.showConv');
 Route::get('/message/showConvJson/{id}','MessageController@showConvJson')->name('message.showConvJson');
