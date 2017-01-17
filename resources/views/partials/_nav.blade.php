@@ -35,11 +35,6 @@
     <a href="/"><img id="leftbar_logo" src="{{ URL('/img/logo.gif') }}"></a>
 
     <div id="leftbar_menu">
-            @if (!Auth::guest())
-                <div class="leftbar_menuitem">
-                    <span ><a href="/findPlayers">Trouver des joueurs</a></span>
-                </div>
-            @endif
             @if (Auth::guest())
                 <div class="leftbar_menuitem">
                     <span ><a href="/login" role="button" aria-haspopup="true" aria-expanded="false">Se connecter</a></span>
@@ -54,6 +49,9 @@
                     <div class="leftbar_menuitem">
                         <span ><a href="/users/showInfo">Mes jeux</a></span>
                     </div>
+                        <div class="leftbar_menuitem">
+                            <span ><a href="/findPlayers">Trouver des joueurs</a></span>
+                        </div>
                     <div class="leftbar_menuitem">
                         <span ><a href="{{ route('teams.list') }}">Teams</a></span>
                     </div>
