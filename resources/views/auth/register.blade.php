@@ -9,7 +9,12 @@
                 <div class="panel-body">
                     {{ Form::open(['url'=>['/register'],'method'=>'POST','files' =>true]) }}
 
-                           {{ csrf_field() }}
+                       {{ csrf_field() }}
+
+                        {{ Form::label('image','Image de profil :') }}
+                        {{ Form::file('image') }}
+
+                        <img src="{{ URL('/img/nopic.png')}}" alt="Smiley face" height="100" width="100">
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Username</label>
@@ -50,6 +55,8 @@
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
+
+
                             </div>
                         </div>
 
@@ -61,12 +68,10 @@
                             </div>
                         </div>
 
-                        {{ Form::label('image','Image de profil :') }}
-                        {{ Form::file('image') }}
 
 
 
-                        <div class="form-group">
+                    <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     S'incrire

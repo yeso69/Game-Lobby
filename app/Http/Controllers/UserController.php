@@ -88,7 +88,6 @@ class UserController extends Controller
         if(isset($request->image)){
             $user->image = $request->image;
             $file = Input::file('image');
-            dd('image');
             $extension = $file->getMimeType();
             //dd($file);
 
