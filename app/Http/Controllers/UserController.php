@@ -79,11 +79,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        //Validating the data
-
-        //store in the database
-
         $user = User::find($id);
 
 
