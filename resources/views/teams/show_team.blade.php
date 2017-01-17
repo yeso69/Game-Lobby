@@ -34,6 +34,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8 text-center">
+
                     <span class="title_fiche">Pseudo In-Game:</span><span class="info_fiche"><?= $us->pseudo ?></span>
                     <span class="title_fiche">Level:</span><span class="info_fiche"><?= $us->level ?></span>
                     <span class="title_fiche">Description:</span><span class="info_fiche"><?= $us->description ?></span>
