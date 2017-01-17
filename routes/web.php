@@ -27,13 +27,21 @@ Route::get('/users/addGame','UserController@loadAddGame');
 
 
 
+
+
+Route::get('/teams/list', 'TeamController@showAllTeams')->name('teams.list');
+
+Route::resource('teams', 'TeamController');
+
 Route::resource('friends', 'FriendController');
 
 
 Route::resource('users', 'UserController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
 Route::get('/findPlayers', 'FriendController@index');
 Route::get('/users/editGame/{id_game}', 'UserController@editGame');
 Route::get('/users/deleteGame/{id_game}', 'UserController@deleteGame');

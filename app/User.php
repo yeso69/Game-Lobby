@@ -34,7 +34,6 @@ class User extends Authenticatable
             ->join('games', 'game_user.id_game', '=', 'games.id_game')
             ->where('game_user.id_user', '=', $id)
             ->get();
-
         return $game;
     }
 

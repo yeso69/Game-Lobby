@@ -53,7 +53,7 @@
                 @else
                     <li class="dropdown">
                             <li><a href="/users/showInfo">Mon compte</a></li>
-                            <li><a href="#">Another action</a></li>
+                            <li><a href="{{ route('teams.list') }}">Teams</a></li>
                             <li><a href="#">Something else here</a></li>
                             <li role="separator" class="divider"></li>
                             <li>
