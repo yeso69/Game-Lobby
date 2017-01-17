@@ -24,6 +24,7 @@ class Message extends Model
 
     public function getConversation($id){
         $result = DB::table('messages')
+            ->select('messages.*', 'users.name')
             ->where([
                 ['sender','=', Auth::user()->id],
                 ['receiver','=',$id]
@@ -32,11 +33,27 @@ class Message extends Model
                 ['receiver','=',Auth::user()->id],
                 ['sender','=',$id]
             ])
+            ->join('users', 'users.id', '=', 'messages.sender')
             ->orderBy('created_at','asc')
             ->get();
         return $result;
 
     }
+
+    /*$result = DB::table('messages')
+->select('messages.*', 'users.name')
+->where([
+['sender','=', Auth::user()->id],
+['receiver','=',$id]
+])
+->orWhere([
+['receiver','=',Auth::user()->id],
+['sender','=',$id]
+])
+->join('users', 'users.id', '=', 'messages.sender')
+->orderBy('created_at','asc')
+->toSql();
+return $result;*/
 
     public function insertMessage($data){
         DB::table('messages')->insert($data);

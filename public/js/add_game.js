@@ -34,6 +34,6 @@ function changeGame(){
 
 function changeGameRank(val){
     $("#level").children().css("display","none");
-    $("#level").children("."+val).css("display","initial");
+    $("#level").children("."+val).css("display","block");
 
 }

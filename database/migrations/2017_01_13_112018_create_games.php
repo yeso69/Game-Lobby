@@ -16,11 +16,12 @@ class CreateGames extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id_game')->index();
             $table->string('name');
+            $table->string('logo');
         });
 
 
         DB::table('games')->insert(
-            array(['name' => 'League of Legends'], ['name' => 'Rocket League'], ['name' => 'Counter Strike Global Offensive'])
+            array(['name' => 'League of Legends', 'logo' => 'logo_lol.png'], ['name' => 'Rocket League', 'logo' => 'logo_rl.png'], ['name' => 'Counter Strike Global Offensive', 'logo' => 'logo_csgo.png'])
         );
     }
 

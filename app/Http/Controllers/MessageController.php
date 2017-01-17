@@ -29,13 +29,37 @@ class MessageController extends Controller
         return view('messages.view_conversation')->with(['messages'=>$result->toArray(),'receiver'=>$request->id]);
     }
 
+    public function showConvJson($id){
+        $model = new Message();
+        $result = $model->getConversation($id);
+        foreach ($result as $message){
+            if ($message->sender == Auth::user()->id ){
+               echo ' <div class="row">
+                            <div class="bloc_message_sent col-lg-9">
+                                <span class="messageLogin">'.$message->name.':</span>
+                                <span class="messageHour">'.$message->created_at.'</span>
+                                <p class="messageBody">'.$message->body.'</p>
+                            </div>
+                        </div>';
+            } else {
+                echo ' <div class="row">
+                            <div class="bloc_message_received col-lg-9 col-lg-offset-3">
+                                <span class="messageLogin">'.$message->name.':</span>
+                                <span class="messageHour">'.$message->created_at.'</span>
+                                <p class="messageBody">'.$message->body.'</p>
+                            </div>
+                        </div>';
+            }
+        }
+    }
+
     public function sendMessage(Request $request){
         $model = new Message();
         $data = $request->input();
         unset($data["_token"]);
         $data["sender"] = Auth::user()->id;
         $data["created_at"] = Carbon::now();
-            $data["updated_at"] = Carbon::now();
+        $data["updated_at"] = Carbon::now();
         $model->insertMessage($data);
 
         return redirect()->route("message.showConv",$data["receiver"]);

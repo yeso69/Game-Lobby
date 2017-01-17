@@ -44,8 +44,6 @@ class User extends Authenticatable
             ->where('game_user.id_user', '=', $id)
             ->where('game_user.id_game', '=', $id_game)
             ->get();
-
-        return $game;
     }
 
     public function insertGame($data){

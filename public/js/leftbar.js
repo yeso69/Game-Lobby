@@ -29,12 +29,10 @@ $(function () {
             success: function (data) {
                 var parsed = JSON.parse(data);
                 $("#bloc_conversations").html("");
-
                 jQuery.each(parsed, function(i, val) {
                     conv = $("<div class='conv'></div>")
                     pseudo = $("<a class='conv_name' href='/message/showConv/"+val.id+"'>"+val.name+"</a>")
                     conv.append(pseudo)
-                    console.log(conv.html())
                     $("#bloc_conversations").append(conv);
                 });
 

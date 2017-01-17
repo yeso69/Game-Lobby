@@ -9,10 +9,20 @@ class Players extends Model
 {
     public function getPlayersByGame($id_user,$id_game){
         $game = DB::table('game_user')
-            ->select('game_user.*')
+            ->select('game_user.*','users.name')
             ->where('game_user.id_game', '=', $id_game)
             ->where('game_user.id_user','!=',$id_user)
+            ->join('users',"game_user.id_user",'=','users.id')
             ->get();
+
+        foreach ($game as $g){
+            $g->allGames = DB::table('games')
+                ->select('games.logo')
+                ->from('games')
+                ->join('game_user','game_user.id_game','=','games.id_game')
+                ->where('game_user.id_user','=',$g->id_user)
+                ->get();
+        }
 
         return $game;
     }
