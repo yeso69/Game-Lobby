@@ -12,5 +12,6 @@ class FriendsTableSeeder extends Seeder
     public function run()
     {
         factory(App\Friend::class, 5)->create();
+
     }
 }
