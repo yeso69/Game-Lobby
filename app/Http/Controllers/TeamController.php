@@ -164,14 +164,21 @@ class TeamController extends Controller
         return view('teams.requests',["data" =>$data]);
     }
 
-    public function acceptRequest($idrequest){
+    public function acceptRequest(Request $request){
         $m =new Team();
-        $m->markAsDeliberated($idrequest);
-        $m->addUserToTeam($idrequest);
+        $m->markAsDeliberated($request->idrequest);
+        $m->addUserToTeam($request->idrequest);
+
+        $data = $m->getAllRequest();
+        return view('teams.requests',["data" =>$data]);
     }
 
-    public function declineRequest(){
+    public function declineRequest(Request $request){
+        $m =new Team();
+        $m->markAsDeliberated($idrequest);
 
+        $data = $teamModel->getAllRequest();
+        return view('teams.requests',["data" =>$data]);
     }
 
     public function requestJoin(Request $request){

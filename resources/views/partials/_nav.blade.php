@@ -43,49 +43,58 @@
                     <span ><a href="/register" role="button" aria-haspopup="true" aria-expanded="false">S'inscrire</a></span>
                 </div>
             @else
-                <div class="leftbar_menuitem">
-                    <span ><a href="/users/{{Auth::user()->id}}/edit">Mon compte</a></span>
-                </div>
-                    <div class="leftbar_menuitem" style="margin-top: 30px">
+            <div class="leftbar_menuitem">
+                <span ><a href="/users/{{Auth::user()->id}}/edit">Mon compte</a></span>
+            </div>
+
+            <div id="jeux_button" class="leftbar_menuitem" style="margin-top: 10px">
+                <span id="jeux_button_title"><a href="#">Jeux</span></a></span>
+                <div id="bloc_jeux">
+                    <div class="leftbar_dropdownitem">
                         <span ><a href="/users/showInfo">Mes jeux</a></span>
                     </div>
+                    <div class="leftbar_dropdownitem">
+                        <span ><a href="/findPlayers">Trouver des joueurs</a></span>
+                    </div>
 
-                    <div class="leftbar_menuitem">
+                </div>
+            </div>
+            <div id="team_button" class="leftbar_menuitem">
+                <span id="team_button_title"><a href="#">Teams</span></a></span>
+                <div id="bloc_teams">
+                    <div class="leftbar_dropdownitem">
                         <span ><a href="{{ route('teams.myTeams') }}">Mes Teams</a></span>
                     </div>
-                    <div class="leftbar_menuitem">
+                    <div class="leftbar_dropdownitem">
                         <span ><a href="{{ route('teams.index') }}">Créer une Team</a></span>
                     </div>
-
-            <div class="leftbar_menuitem"  style="margin-top: 30px">
-                <span ><a href="{{ route('teams.showNewRequests') }}">Requests</a></span>
-            </div>
-                <div id="message_button" class="leftbar_menuitem">
-                    <span id="message_button_title"><a href="#">Messages</span></a></span>
-                    <div id="bloc_conversations">
-                        <img src="{{ URL('/img/loading.gif') }}">
+                    <div class="leftbar_dropdownitem">
+                        <span ><a href="{{ route('teams.list') }}">Trouver des Teams</a></span>
                     </div>
                 </div>
+            </div>
+            <div class="leftbar_menuitem"  style="margin-top: 10px">
+                <span ><a href="{{ route('teams.showNewRequests') }}">Requests</a></span>
+            </div>
+            <div id="message_button" class="leftbar_menuitem">
+                <span id="message_button_title"><a href="#">Messages</span></a></span>
+                <div id="bloc_conversations">
+                    <img src="{{ URL('/img/loading.gif') }}">
+                </div>
+            </div>
+            <div class="leftbar_menuitem" style="margin-top: 50px">
+                <span ><a href="{{ url('/logout') }}"
+                                      onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                        Déconnexion
+                    </a></span>
+            </div>
+            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
 
-                <div class="leftbar_menuitem" style="margin-top: 30px">
-                    <span ><a href="/findPlayers">Trouver des joueurs</a></span>
-                </div>
-                <div class="leftbar_menuitem">
-                    <span ><a href="{{ route('teams.list') }}">Trouver des Teams</a></span>
-                </div>
-                <div class="leftbar_menuitem" style="margin-top: 30px">
-                    <span ><a href="{{ url('/logout') }}"
-                                          onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                            Déconnexion
-                        </a></span>
-                </div>
-                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-
-                    </li>
                 </li>
+            </li>
             @endif
     </div>
 </div>

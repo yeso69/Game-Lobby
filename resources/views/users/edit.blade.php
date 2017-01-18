@@ -14,6 +14,7 @@
 
 @section('content')
     <div class="col-lg-10" id="browse_teams">
+        <div class="col-lg-6 col-lg-offset-3">
         <h1>Mes Infos</h1>
 
     {{ Form::open(['route'=>['users.update',Auth::user()->id],'method'=>'PATCH','files' =>true]) }}
@@ -33,6 +34,7 @@
         {{ Form::submit('Valider',array('class' => 'btn btn-success')) }}
 
     {{ Form::close() }}
+        </div>
 
 
 

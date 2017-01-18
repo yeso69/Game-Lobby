@@ -106,16 +106,24 @@ class Team extends Model
         return $data;
     }
 
-    public function addUserToTeam($idplayer,$idteam){
+    public function addUserToTeam($idrequest){
+        $data = $this->getRequestJoin($idrequest)->toArray();
         DB::table('team_user')->insert([
-            ['id_team' => $idteam,
-            'id_user' => $idplayer]
+            ['id_team' => $data[0]->team_id,
+            'id_user' => $data[0]->user_id]
         ]);
+    }
+
+    public function getRequestJoin($idrequest){
+        return DB::table('requestjointeam')
+            ->select('requestjointeam.*')
+            ->where('id_request','=',$idrequest)
+            ->get();
     }
 
     public function markAsDeliberated($idrequest){
         DB::table('requestjointeam')
-            ->where('id', $idrequest)
+            ->where('id_request', $idrequest)
             ->update(['deliberated' => 1]);
     }
 

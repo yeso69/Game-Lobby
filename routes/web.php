@@ -61,3 +61,5 @@ Route::get('/message/getConv','MessageController@getConv')->name('message.getCon
 Route::get('/message/showConv/{id}','MessageController@showConv')->name('message.showConv');
 Route::get('/message/showConvJson/{id}','MessageController@showConvJson')->name('message.showConvJson');
 Route::get('/teams/requestJoin/{idteam}','TeamController@requestJoin')->name('teams.requestJoin');
+Route::get('/teams/acceptRequest/{idrequest}','TeamController@acceptRequest')->name('teams.acceptRequest');
+Route::get('/teams/declineRequest/{idrequest}','TeamController@declineRequest')->name('teams.declineRequest');

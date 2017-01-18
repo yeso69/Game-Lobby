@@ -8,6 +8,7 @@ body{
     height: 100vh;
     background-color: #171717;
     padding-top: 30px;
+    overflow-y: hidden;
 }
 
 
@@ -34,18 +35,17 @@ body{
 .leftbar_menuitem:hover{
     background-color: #414141;
     color: white;
-    font-weight: bolder;
 }
 .leftbar_menuitem a {
     text-decoration: none;
     color: whitesmoke;
 }
 
-#message_button{
+#message_button, #jeux_button, #team_button{
     height: auto;
 }
 
-#bloc_conversations{
+#bloc_conversations, #bloc_jeux, #bloc_teams{
     height: 0px;
     background-color: #414141;
     width: 100%;

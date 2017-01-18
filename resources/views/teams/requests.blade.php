@@ -13,6 +13,10 @@
 
 
     <div id="view_request" class="col-lg-10">
+        <h1>Demandes d'acceptation</h1>
+        @if (sizeof($data) == 0)
+            <h4><i>Vous n'avez aucune requête en attente</i></h4>
+        @endif
         @foreach($data as $d)
             <div class="block_request text-center col-lg-8 col-lg-offset-2">
                 <div class="row">
@@ -27,8 +31,8 @@
                     <div class="col-lg-12">
                         <span>This user would like to join your team <span class="teamname">{{$d->name_team}}</span></span>
                     </div>
-                    <a href="teams.acceptRequest"><input type="button" class="btn btn-success" id="acceptButton" value="Accept"></a>
-                    <a><input type="button" class="btn btn-warning" id="declineButton" value="Decline"></a>
+                    <a href="/teams/acceptRequest/{{$d->id_request}}"><input type="button" class="btn btn-success" id="acceptButton" value="Accept"></a>
+                    <a href="/teams/declineRequest/{{$d->id_request}}"><input type="button" class="btn btn-warning" id="declineButton" value="Decline"></a>
                 </div>
             </div>
         @endforeach
