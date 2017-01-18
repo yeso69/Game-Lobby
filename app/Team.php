@@ -81,7 +81,17 @@ class Team extends Model
                 ->get();
         }
         return $user;
+    }
 
+
+    public function createRequest($idteam){
+        DB::table('requestjointeam')->insert([
+            ['user_id' => Auth::user()->login],
+            ['team_id' => $idteam],
+            ['deliberated' => false],
+            ['created_at'=> Carbon::now()],
+            ['updated_at'=> Carbon::now()]
+        ]);
     }
 
     public function getTeamsByUser($id_user){

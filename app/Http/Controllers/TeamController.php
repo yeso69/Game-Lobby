@@ -162,12 +162,17 @@ class TeamController extends Controller
 
     public function acceptRequest($idrequest){
         $m =new Team();
-        $m->markAsDeliberated($idrequest)
-        $m->add($idrequest)
+        $m->markAsDeliberated($idrequest);
+        $m->add($idrequest);
     }
 
     public function declineRequest(){
 
+    }
+
+    public function requestJoin(Request $request){
+        $m = new Team();
+        $m->createRequest($request->id_team);
     }
 
 }
