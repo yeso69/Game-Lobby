@@ -122,4 +122,14 @@ class Team extends Model
     public function suppUserFromTeam($id_user,$id_team){
         var_dump($id_team);die();
     }
+
+    public function alreadyRequested($idteam){
+        // SELECT count(id_request) FROM requestjointeam WHERE team_id=2 AND user_id = 2
+        $data = DB::table('requestjointeam')
+            ->where('team_id',$idteam)
+            ->where('user_id',Auth::user()->id)
+            ->count();
+        if ($data == 0) return false;
+        return true;
+    }
 }

@@ -176,8 +176,9 @@ class TeamController extends Controller
 
     public function requestJoin(Request $request){
         $m = new Team();
-        $m->createRequest($request->idteam);
-
+        if (!($m->alreadyRequested($request->idteam))){
+            $m->createRequest($request->idteam);
+        }
         $data = $m->getTeamById($request->idteam);
         $user = $m->getUserByTeam($request->idteam,$data[0]->id_game);
         return view('teams.show_team',["data" =>$data->toArray(),"user" =>$user->toArray()]);
