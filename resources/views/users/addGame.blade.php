@@ -9,8 +9,9 @@
     </script>
     <script type="text/javascript" src="{{ URL('/js/add_game.js') }}"></script>
 
-
-    Ajouter un jeu :
+    <div class="all_page_add_game col-lg-10">
+        <div class="title_add_game col-lg-12" style="margin-top: 10px;margin-bottom: 10px;">Ajouter un jeu :</div><br>
+        <div class="add_game_form col-lg-12">
 
     <form class="form-horizontal" role="form" method="POST" action="{{ url('/users/addGameData') }}">
         {{ csrf_field() }}
@@ -149,8 +150,10 @@
         </div>
 
 
-        <button>Valider</button>
+        <button class="btn btn-success">Valider</button>
 
 
     </form>
+    </div>
+    </div>
 @endsection

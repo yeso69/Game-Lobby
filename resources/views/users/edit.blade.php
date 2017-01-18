@@ -31,7 +31,7 @@
         {{ Form::label('image','Image de profil :') }}<br>
         <img src="{{ URL(Auth::user()->image)}}" alt="No Image" height="100" width="100">
         {{ Form::file('image') }}
-        {{ Form::submit('Valider',array('class' => 'btn btn-success')) }}
+        {{ Form::submit('Valider',array('class' => 'btn btn-success form-control')) }}
 
     {{ Form::close() }}
         </div>

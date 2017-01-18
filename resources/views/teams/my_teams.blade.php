@@ -43,7 +43,7 @@
                                     <img src="{{ URL($us->image) }}" alt="Team image" height="100" width="100">
                                     @if ($d->id_admin == Auth::user()->id)
                                         @if($d->id_admin != $us->id_user)
-                                            <a href="/teams/supprUserFromTeam/{{$us->id_user}}/team/{{$d->id_team}}"><button>Exclure</button></a>
+                                            <a href="/teams/supprUserFromTeam/{{$us->id_user}}/team/{{$d->id_team}}"><button class="btn btn-danger">Exclure</button></a>
                                         @endif
                                     @endif
                                 </div>
@@ -51,10 +51,10 @@
                     @endforeach
                 </div>
                 @if ($d->id_admin != Auth::user()->id)
-                    <div class="col-lg-12"><a href="/teams/supprUserFromTeam/{{Auth::user()->id}}/team/{{$d->id_team}}"><button>Quitter la team</button></a></div>
+                    <div class="col-lg-12"><a href="/teams/supprUserFromTeam/{{Auth::user()->id}}/team/{{$d->id_team}}"><button class="btn btn-danger">Quitter la team</button></a></div>
                 @endif
                 @if($d->id_admin == Auth::user()->id)
-                    <div class="col-lg-12"><a href="/teams/supprTeam/{{$d->id_team}}"><button>Supprimer la team</button></a></div>
+                    <div class="col-lg-12"><a href="/teams/supprTeam/{{$d->id_team}}"><button class="btn btn-danger">Supprimer la team</button></a></div>
                 @endif
                 </div>
         @endforeach

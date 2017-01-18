@@ -12,6 +12,7 @@
 @endsection
 
 @section('content')
+    <div class="all_page col-lg-10">
 
     @if (!isset($data))
         Vos info par jeux :<br><br>
@@ -32,13 +33,13 @@
                 <img src="{{ URL('img/csgo.jpg') }}" alt="Team image" height="165" width="165" style="float:left">
             @endif
 
-            Jeu : {{$game->name}} <br>
-            Pseudo : {{$game->pseudo}} <br>
-            Niveau : {{$game->level}} <br>
-            Description : {{$game->description}}<br>
-            Recherche : {{$game->search}}<br>
+                <b>Jeu :</b> {{$game->name}} <br>
+                <b>Pseudo :</b> {{$game->pseudo}} <br>
+                <b>Niveau :</b> {{$game->level}} <br>
+                <b>Description :</b> {{$game->description}}<br>
+                <b>Recherche :</b> {{$game->search}}<br>
             @if ($game->id_game === 1)
-                Poste : {{$game->position}}
+                    <b>Poste :</b> {{$game->position}}
             @endif
             <br><br>
             <div style="text-align: center;">
@@ -51,7 +52,8 @@
     @endforeach
 
     @if(count($data) != 3)
-        <a href="/users/addGame/"><button>Ajouter des jeux</button></a>
+        <a href="/users/addGame/"><button class="btn btn-primary">Ajouter des jeux</button></a>
     @endif
+    </div>
 
     @endsection

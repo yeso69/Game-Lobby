@@ -75,3 +75,12 @@ body{
     font-weight: normal;
 }
 
+.title_add_game{
+    text-align: center;
+    font-size: 2em;
+}
+
+.add_game_form{
+    text-align: center!important;
+}
+
