@@ -26,10 +26,9 @@
                     <div><b>Jeu :</b> {{$d->name}}</div>
                     <div><b>Description :</b> {{$d->description}}</div>
                 </div>
-
                 <div class="players col-lg-6">
                     <div class="title_team_player">Joueurs dans l'équipe :</div>
-                @foreach ($d->user as $us)
+                    @foreach ($d->user as $us)
                             <div class="one_player col-lg-12">
                                 <div class="info_player col-lg-6">
                                     <div><b>Pseudo:</b> {{$us->pseudo}}</div>
@@ -50,13 +49,15 @@
                             </div>
                     @endforeach
                 </div>
-                @if ($d->id_admin != Auth::user()->id)
-                    <div class="col-lg-12"><a href="/teams/supprUserFromTeam/{{Auth::user()->id}}/team/{{$d->id_team}}"><button class="btn btn-danger">Quitter la team</button></a></div>
-                @endif
-                @if($d->id_admin == Auth::user()->id)
-                    <div class="col-lg-12"><a href="/teams/supprTeam/{{$d->id_team}}"><button class="btn btn-danger">Supprimer la team</button></a></div>
-                @endif
+                <div class="col-lg-12 text-center">
+                    @if ($d->id_admin != Auth::user()->id)
+                        <div class="col-lg-12"><a href="/teams/supprUserFromTeam/{{Auth::user()->id}}/team/{{$d->id_team}}"><button class="btn btn-danger">Quitter la team</button></a></div>
+                    @endif
+                    @if($d->id_admin == Auth::user()->id)
+                        <div class="col-lg-12"><a href="/teams/supprTeam/{{$d->id_team}}"><button class="btn btn-danger">Supprimer la team</button></a></div>
+                    @endif
                 </div>
+            </div>
         @endforeach
     </div>
 @endsection

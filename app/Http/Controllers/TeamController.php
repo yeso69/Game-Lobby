@@ -168,7 +168,7 @@ class TeamController extends Controller
     public function acceptRequest(Request $request){
         $m =new Team();
         $m->markAsDeliberated($request->idrequest);
-        $m->addUserToTeam($request->idrequest);
+        $m->addUserToTeamByRequest($request->idrequest);
 
         $data = $m->getAllRequest();
         return view('teams.requests',["data" =>$data]);

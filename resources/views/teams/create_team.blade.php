@@ -41,15 +41,10 @@
 
         {{ Form::label('description','Description :') }}
         {{ Form::text('description','', array('class' => 'form-control')) }}
+            <br>
+            {{ Form::submit('Valider',array('class' => 'btn btn-success btn-lg btn-block')) }}
 
             </div>
-
-
-
-
-
-        {{ Form::submit('Valider',array('class' => 'btn btn-success btn-lg btn-block')) }}
-
         <input type="hidden" name="id_admin" id="id_admin" value="{{Auth::user()->id}}">
 
         {{ Form::close() }}

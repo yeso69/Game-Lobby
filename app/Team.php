@@ -87,11 +87,11 @@ class Team extends Model
 
     public function createRequest($idteam){
         DB::table('requestjointeam')->insert([
-            ['user_id' => Auth::user()->login],
-            ['team_id' => $idteam],
-            ['deliberated' => false],
-            ['created_at'=> Carbon::now()],
-            ['updated_at'=> Carbon::now()]
+            ['user_id' => Auth::user()->id,
+            'team_id' => $idteam,
+            'deliberated' => false,
+            'created_at'=> Carbon::now(),
+            'updated_at'=> Carbon::now()]
         ]);
     }
 
@@ -105,11 +105,18 @@ class Team extends Model
         return $data;
     }
 
-    public function addUserToTeam($idrequest){
+    public function addUserToTeamByRequest($idrequest){
         $data = $this->getRequestJoin($idrequest)->toArray();
         DB::table('team_user')->insert([
             ['id_team' => $data[0]->team_id,
             'id_user' => $data[0]->user_id]
+        ]);
+    }
+
+    public function addUserToTeam($iduser, $idteam){
+        DB::table('team_user')->insert([
+            ['id_team' => $idteam,
+                'id_user' => $iduser]
         ]);
     }
 
