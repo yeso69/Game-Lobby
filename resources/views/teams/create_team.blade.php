@@ -31,7 +31,12 @@
         {{ Form::text('name_team','', array('class' => 'form-control')) }}
 
         {{ Form::label('id_game','Jeu :') }}
-        {{  Form::select('id_game', array('1' => 'League Of Legends', '2' => 'Rocket League', '3' => 'CS:GO'))  }}
+
+        <select id="id_game" name="id_game" class="form-control">
+            <option value="1">League Of Legends</option>
+            <option value="2">Rocket League</option>
+            <option value="3">CS:GO</option>
+        </select>
 
         {{ Form::label('description','Description :') }}
         {{ Form::text('description','', array('class' => 'form-control')) }}
