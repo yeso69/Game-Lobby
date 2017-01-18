@@ -21,6 +21,7 @@ function changeGame(){
 }
 
 function createCard(data) {
+
     return ''+
         '<div class="col-lg-6">' +
             '<div class="team_card">' +
