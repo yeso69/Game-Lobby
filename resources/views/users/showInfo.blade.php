@@ -51,7 +51,7 @@
     @endforeach
 
     @if(count($data) != 3)
-        <a href="/users/addGame/"><button>Ajouter des jeux</button></a>
+        <a href="/users/addGame/"><button class="btn btn-success">Ajouter des jeux</button></a>
     @endif
 
     @endsection

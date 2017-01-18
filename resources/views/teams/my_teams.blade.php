@@ -51,10 +51,10 @@
                     @endforeach
                 </div>
                 @if ($d->id_admin != Auth::user()->id)
-                    <div class="col-lg-12"><a href="/teams/supprUserFromTeam/{{Auth::user()->id}}/team/{{$d->id_team}}"><button>Quitter la team</button></a></div>
+                    <div class="col-lg-12" style="text-align:right"><a href="/teams/supprUserFromTeam/{{Auth::user()->id}}/team/{{$d->id_team}}"><button class="btn btn-warning">Quitter la team</button></a></div>
                 @endif
                 @if($d->id_admin == Auth::user()->id)
-                    <div class="col-lg-12"><a href="/teams/supprTeam/{{$d->id_team}}"><button>Supprimer la team</button></a></div>
+                    <div class="col-lg-12 " style="text-align:right"><a href="/teams/supprTeam/{{$d->id_team}}"><button class="btn btn-danger">Supprimer la team</button></a></div>
                 @endif
                 </div>
         @endforeach
