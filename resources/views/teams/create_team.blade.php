@@ -5,12 +5,13 @@
 
 @section('stylesheets')
     <link rel="stylesheet" href="{{ URL('/css/browse_players.css') }}">
-    <link rel="stylesheet" href="{{ URL('/css/player_card.css') }}">
+    <link rel="stylesheet" href="{{ URL('/css/team_card.css') }}">
 
     <script type="text/javascript" src="{{ URL('/js/player_card.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 @endsection
+
 
 @section('content')
 
@@ -19,10 +20,12 @@
 
         {{ Form::open(['route'=>['teams.store'],'method'=>'POST','files' =>true]) }}
 
-        {{ Form::label('image','Image de Team :') }}
+        <img src="{{ URL('/img/nopic.png') }}" alt="Team image" height="100" width="100">
+        {{ Form::label('image','Logo de la Team ') }}
+
         {{ Form::file('image') }}
 
-        <img src="{{ URL('/img/nopic.png') }}" alt="Team image" height="100" width="100">
+
 
         {{ Form::label('name_team','Nom de la Team :') }}
         {{ Form::text('name_team','', array('class' => 'form-control')) }}
