@@ -174,4 +174,9 @@ class TeamController extends Controller
 
     }
 
+    public function requestJoin(Request $request){
+        $m = new Team();
+        $m->createRequest($request->id_team);
+    }
+
 }
