@@ -101,7 +101,6 @@ class Team extends Model
             ->join('team_user','teams.id_team','=','team_user.id_team')
             ->join('games','teams.id_game','=','games.id_game')
             ->where('team_user.id_user','=',$id_user)
-            ->orwhere('teams.id_admin','=',$id_user)
             ->get();
         return $data;
     }

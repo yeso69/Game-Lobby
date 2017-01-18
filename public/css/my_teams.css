@@ -1,0 +1,32 @@
+.teams{
+    border:solid 2px black;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.players{
+}
+
+.presentation_team{
+    text-align: center;
+    font-size:1.5em;
+    margin-top: 10%;
+}
+
+#myteam {
+    height: 100vh;
+}
+
+.one_player{
+    margin: 2%;
+}
+
+.title_myteam {
+    font-size: 3em;
+    text-align: center;
+}
+
+.title_team_player{
+    text-align: center;
+    font-size: 2em;
+}
