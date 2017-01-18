@@ -19,7 +19,7 @@
     @endif
 
     @foreach ($data as $game)
-    <div class="team_card">
+    <div class="team_card_info">
         <div class="game" id="{{$game->id_game}}">
             @if ($game->id_game == 1)
                 <img src="{{ URL('img/lol.jpg') }}" alt="Team image" height="165" width="165" style="float:left">
