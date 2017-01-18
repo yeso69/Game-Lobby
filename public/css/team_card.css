@@ -19,7 +19,7 @@
 
 .game img {
     width:45%;
-    height: 120px;
+    height: 165px;
     margin-top: inherit;
 }
 
@@ -27,7 +27,6 @@
     background-color: rgb(120,120,120);
     color: white;
     width: 450px;
-    height: 170px;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
