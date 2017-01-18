@@ -10,7 +10,7 @@
     @else
         <div>Vous n'avez pas de team</div>
     @endif
-    @foreach($data as $d)
+     @foreach($data as $d)
         <div>
             <div>Nom : {{$d->name_team}}</div>
             <div>Jeu : {{$d->name}}</div>
