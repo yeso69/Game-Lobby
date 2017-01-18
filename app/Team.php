@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -86,11 +87,11 @@ class Team extends Model
 
     public function createRequest($idteam){
         DB::table('requestjointeam')->insert([
-            ['user_id' => Auth::user()->login],
-            ['team_id' => $idteam],
-            ['deliberated' => false],
-            ['created_at'=> Carbon::now()],
-            ['updated_at'=> Carbon::now()]
+            ['user_id' => Auth::user()->id,
+            'team_id' => $idteam,
+            'deliberated' => false,
+            'created_at'=> Carbon::now(),
+            'updated_at'=> Carbon::now()]
         ]);
     }
 

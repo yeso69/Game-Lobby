@@ -20,7 +20,7 @@
         <h2>Jeu</h2>
         <p>{{$data[0]->name}}</p>
 
-        <a href="teams.requestJoin/>{{$data[0]->id_team}}"><input type="button" class="btn btn-success" value="Request join team"></a>
+        <a href="/teams/requestJoin/{{$data[0]->id_team}}"><input type="button" class="btn btn-success" value="Request join team"></a>
 
         <h2>Joueurs dans l'équipe</h2>
         <?php foreach ($user as $us){ ?>
