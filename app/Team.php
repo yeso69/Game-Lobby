@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -100,6 +101,7 @@ class Team extends Model
             ->join('team_user','teams.id_team','=','team_user.id_team')
             ->join('games','teams.id_game','=','games.id_game')
             ->where('team_user.id_user','=',$id_user)
+            ->orwhere('teams.id_admin','=',$id_user)
             ->get();
         return $data;
     }
@@ -126,4 +128,14 @@ class Team extends Model
         DB::table('teams')->where('id_team','=',$id_team)->delete();
     }
 
+
+    public function alreadyRequested($idteam){
+        // SELECT count(id_request) FROM requestjointeam WHERE team_id=2 AND user_id = 2
+        $data = DB::table('requestjointeam')
+            ->where('team_id',$idteam)
+            ->where('user_id',Auth::user()->id)
+            ->count();
+        if ($data == 0) return false;
+        return true;
+    }
 }

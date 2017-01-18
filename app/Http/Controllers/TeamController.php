@@ -168,7 +168,7 @@ class TeamController extends Controller
     public function acceptRequest($idrequest){
         $m =new Team();
         $m->markAsDeliberated($idrequest);
-        $m->add($idrequest);
+        $m->addUserToTeam($idrequest);
     }
 
     public function declineRequest(){
@@ -177,7 +177,12 @@ class TeamController extends Controller
 
     public function requestJoin(Request $request){
         $m = new Team();
-        $m->createRequest($request->id_team);
+        if (!($m->alreadyRequested($request->idteam))){
+            $m->createRequest($request->idteam);
+        }
+        $data = $m->getTeamById($request->idteam);
+        $user = $m->getUserByTeam($request->idteam,$data[0]->id_game);
+        return view('teams.show_team',["data" =>$data->toArray(),"user" =>$user->toArray()]);
     }
 
     public function supprTeam(Request $request){
