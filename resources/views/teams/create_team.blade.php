@@ -12,6 +12,7 @@
 
 @endsection
 
+
 @section('content')
 
     <div class="col-lg-10" id="browse_teams">

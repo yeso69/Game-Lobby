@@ -152,10 +152,11 @@ class TeamController extends Controller
     }
 
     public function supprUserFromTeam(Request $request){
-        $id_user = $request->input('id_user');
-        $id_team = $request->input('id_team');
+        $id_user = $request->id_user;
+        $id_team = $request->id_team;
         $teamModel = new Team();
         $teamModel->suppUserFromTeam($id_user,$id_team);
+        return redirect()->route('teams.myTeams');
     }
 
     public function showNewRequests(){
@@ -190,5 +191,13 @@ class TeamController extends Controller
         $user = $m->getUserByTeam($request->idteam,$data[0]->id_game);
         return view('teams.show_team',["data" =>$data->toArray(),"user" =>$user->toArray()]);
     }
+
+    public function supprTeam(Request $request){
+        $id_team = $request->id_team;
+        $teamModel = new Team();
+        $teamModel->supprTeam($id_team);
+        return redirect()->route('teams.myTeams');
+    }
+
 
 }

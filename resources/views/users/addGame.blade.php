@@ -1,5 +1,8 @@
 @extends('main')
 
+@section('title', '| Ajouter un jeu')
+
+
 @section('content')
     <script>
     var data = '<?php echo json_encode($data); ?>';
