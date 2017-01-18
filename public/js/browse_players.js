@@ -64,16 +64,16 @@ function createCard(data) {
     if (data.id_game == 1) poste = '<span class="title_fiche">Poste:</span><span class="info_fiche">' + data["position"] + '</span>'
 
     return ''+
-        '<div class="col-lg-3">'+
+        '<div class="col-lg-4">'+
         '<div class="player_card">' +
         '<div class="col-lg-4 player_resume text-center">' +
         '<img class="img-responsive img" src="'+data["image"]+'">' +
         '<span>'+data["name"]+'</span>'+
         '<div class="col-lg-12">'+logos.html()+'</div>' +
         '</div>' +
-        '<div class="col-lg-8 text-center">' +
+        '<br class="col-lg-8 text-center">' +
 
-        '<span class="title_fiche">Pseudo In-Game:</span><span class="info_fiche">' + data["pseudo"] + '</span>'+
+        '<span class="title_fiche">Pseudo In-Game:</span><br><span class="info_fiche">' + data["pseudo"] + '</span>'+
         '<span class="title_fiche">Level:</span><span class="info_fiche">' + data["level"] + '</span>'+
         poste+
         '<span class="title_fiche">Description:</span><span class="info_fiche">' + data["description"] + '</span>'+
