@@ -15,15 +15,24 @@ function changeGame(){
         data = JSON.parse(data);
         console.log(data);
         $.each(data,function(i){
-            $("#browse_teams").append(
-                '<div class="col-lg-6">' +
-                '<div class="team_card">' +
-                '<div> Jeu :' + data[i]["name"]  + '</div>' +
-                '<div> Nom :' + data[i]["name_team"]  + '</div>' +
-                '<div> Description :' + data[i]["description"]  + '</div>' +
-                    '<a href="/teams/showT/' + data[i]["id_team"]  + '"><button>Voir résumé</button></a>' +
-            '</div>' +
-            '</div>');
+            $("#browse_teams").append(createCard(data[i]));
         })
     });
+}
+
+function createCard(data) {
+    return ''+
+        '<div class="col-lg-6">' +
+            '<div class="team_card">' +
+                '<div class="col-lg-6 text-center">' +
+                    '<img src="/'+data["image"]+'">' +
+                '</div>'+
+                '<div class="col-lg-6">' +
+                    '<span> Jeu :' + data["name"]  + '</span>' +
+                    '<span> Nom :' + data["name_team"]  + '</span>' +
+                    '<span> Description :' + data["description"]  + '</span>' +
+                    '<a href="/teams/showT/' + data["id_team"]  + '"><button class="btn btn-success">Voir résumé</button></a>' +
+                '</div>'+
+            '</div>' +
+        '</div>';
 }
