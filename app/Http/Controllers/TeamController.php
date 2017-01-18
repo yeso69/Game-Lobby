@@ -152,10 +152,11 @@ class TeamController extends Controller
     }
 
     public function supprUserFromTeam(Request $request){
-        $id_user = $request->input('id_user');
-        $id_team = $request->input('id_team');
+        $id_user = $request->id_user;
+        $id_team = $request->id_team;
         $teamModel = new Team();
         $teamModel->suppUserFromTeam($id_user,$id_team);
+        return redirect()->route('teams.myTeams');
     }
 
     public function showNewRequests(){
@@ -178,5 +179,13 @@ class TeamController extends Controller
         $m = new Team();
         $m->createRequest($request->id_team);
     }
+
+    public function supprTeam(Request $request){
+        $id_team = $request->id_team;
+        $teamModel = new Team();
+        $teamModel->supprTeam($id_team);
+        return redirect()->route('teams.myTeams');
+    }
+
 
 }
