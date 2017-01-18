@@ -23,7 +23,7 @@
                     <div>Poste : {{$us->position}}</div>
                 @endif
                 @if ($d->id_admin == Auth::user()->id)
-                    <div><a href="{{route('teams.supprUser', ['id_user' => \Illuminate\Support\Facades\Auth::user()->id,'id_team' => $d->id_team])}}"><button>Suppression</button></a></div>
+                    <div><a href="/teams/supprUserFromTeam/{{}}><button>Exclure</button></a></div>
                 @endif
             @endforeach
         </div>

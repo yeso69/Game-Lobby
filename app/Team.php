@@ -90,14 +90,15 @@ class Team extends Model
             ->join('team_user','teams.id_team','=','team_user.id_team')
             ->join('games','teams.id_game','=','games.id_game')
             ->where('team_user.id_user','=',$id_user)
+            ->orwhere('teams.id_admin','=',$id_user)
             ->get();
         return $data;
     }
 
-    public function addUserToTeam($idplayer, $idteam){
+    public function addUserToTeam($idplayer,$idteam){
         DB::table('team_user')->insert([
-            ['id_team' => $idteam],
-            ['id_user' => $idplayer]
+            ['id_team' => $idteam,
+            'id_user' => $idplayer]
         ]);
     }
 

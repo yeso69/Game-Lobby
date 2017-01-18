@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use DB;
 
 class TeamController extends Controller
 {
@@ -66,6 +67,9 @@ class TeamController extends Controller
             'id_game' => $request['id_game'],
             'image' => $image //filename....
         ]);
+
+        $teamModel = new Team();
+        $teamModel->addUserToTeam(Auth::user()->id,DB::getPdo()->lastInsertId());
 
         return redirect()->route('teams.myTeams');
     }
@@ -162,8 +166,8 @@ class TeamController extends Controller
 
     public function acceptRequest($idrequest){
         $m =new Team();
-        $m->markAsDeliberated($idrequest)
-        $m->add($idrequest)
+        $m->markAsDeliberated($idrequest);
+        $m->add($idrequest);
     }
 
     public function declineRequest(){
